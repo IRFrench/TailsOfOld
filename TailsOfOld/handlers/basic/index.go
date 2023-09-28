@@ -1,8 +1,9 @@
 package basic
 
 import (
+	filesystem "TailsOfOld"
+	"html/template"
 	"net/http"
-	"text/template"
 	"time"
 )
 
@@ -12,8 +13,10 @@ type IndexVariables struct {
 }
 
 func IndexHttp(response http.ResponseWriter, request *http.Request) {
+	templatePath := "TailsOfOld/static/templates/basic/index.html"
 	template := template.New("index.html")
-	template, err := template.ParseFiles("TailsOfOld/templates/basic/index.html")
+
+	template, err := template.ParseFS(filesystem.FileSystem, templatePath)
 	if err != nil {
 		panic(err)
 	}
