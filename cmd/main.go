@@ -20,9 +20,13 @@ func main() {
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
-	server := server.CreateServer(ADDR)
+	server, err := server.CreateServer(ADDR)
+	if err != nil {
+		slog.Error("Server could not be created", "Error", err)
+		return
+	}
 
-	slog.Info("Running server")
+	slog.Info("Running server", "Address", ADDR)
 	go server.Run(errorLog)
 
 	for {

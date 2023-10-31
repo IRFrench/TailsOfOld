@@ -1,0 +1,16 @@
+{{define "base"}}
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <script src="/static/js/htmx.js"></script>
+</head>
+
+<body>
+    {{template "nav"}}
+    {{template "content" .}}
+    {{template "foot"}}
+</body>
+
+</html>
+{{end}}
