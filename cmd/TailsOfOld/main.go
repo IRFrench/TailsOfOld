@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	ADDR = "127.0.0.1:9000"
+	ADDR = "0.0.0.0:9000"
 )
 
 func main() {

@@ -3,10 +3,12 @@
 
 <head>
     <link rel="stylesheet" href="/static/css/tailwind.css">
-    <script src="/static/js/htmx.js"></script>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+    <script src="/static/js/nav.js" defer></script>
+    {{template "js"}}
 </head>
 
-<body>
+<body class="">
     {{template "nav"}}
     {{template "content" .}}
     {{template "foot"}}

@@ -1,24 +1,59 @@
 {{define "nav"}}
-<nav
-    class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
-    <div class="flex w-full flex-wrap items-center justify-between px-3">
-        <a class="ml-2 text-xl text-neutral-800 dark:text-neutral-200" href="#">Navbar</a>
-        <div class="ml-5 flex w-[30%] items-center justify-between">
-            <input type="search"
-                class="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-                placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
+<div class="dark:bg-neutral-600">
+    <nav
+        class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:py-4 bg-transparent">
+        <div class="flex w-full flex-wrap items-center justify-between px-3">
+            <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                id="navbarSupportedContent1" data-twe-collapse-item>
+                <!-- Logo -->
+                <a class="mb-4 me-5 ms-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
+                    href="/">
+                    <img src="/static/img/logo.png" style="height: 50px" alt="TE Logo" loading="lazy" />
+                </a>
+                <!-- Left navigation links -->
+                <ul class="list-style-none me-auto flex flex-col ps-0 lg:flex-row" data-twe-navbar-nav-ref>
+                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+                        <!-- Dashboard link -->
+                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                            href="#" data-twe-nav-link-ref>Programming</a>
+                    </li>
+                    <!-- Team link -->
+                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                            href="#" data-twe-nav-link-ref>Games</a>
+                    </li>
+                    <!-- Projects link -->
+                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                            href="#" data-twe-nav-link-ref>Tales</a>
+                    </li>
+                    <!-- Darkmode -->
+                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2 cursor-pointer"
+                            onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <div class="ml-5 flex w-[30%] items-center justify-between">
+                <input type="search"
+                    class="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                    placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
 
-            <!--Search icon-->
-            <span
-                class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
-                id="basic-addon2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                    <path fill-rule="evenodd"
-                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                        clip-rule="evenodd" />
-                </svg>
-            </span>
+                <!--Search icon-->
+                <span
+                    class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
+                    id="basic-addon2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd"
+                            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+    <hr
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+</div>
 {{end}}

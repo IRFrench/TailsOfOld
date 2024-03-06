@@ -1,0 +1,211 @@
+{{define "js"}}
+{{end}}
+{{define "content"}}
+<div class="dark:bg-slate-800">
+    <!-- Section: Programming Box -->
+    <section class="background-program-gradient">
+        <style>
+            .background-program-gradient {
+                background-color: hsl(218, 41%, 15%);
+                background-image: radial-gradient(650px circle at 0% 0%,
+                        hsl(218, 41%, 35%) 15%,
+                        hsl(218, 41%, 30%) 35%,
+                        hsl(218, 41%, 20%) 75%,
+                        hsl(218, 41%, 19%) 80%,
+                        transparent 100%),
+                    radial-gradient(1250px circle at 100% 100%,
+                        hsl(218, 41%, 45%) 15%,
+                        hsl(218, 41%, 30%) 35%,
+                        hsl(218, 41%, 20%) 75%,
+                        hsl(218, 41%, 19%) 80%,
+                        transparent 100%);
+            }
+        </style>
+
+        <div class="px-6 py-12 text-center md:px-12 lg:text-left">
+            <div class="container mx-auto">
+                <div class="grid items-center gap-12 lg:grid-cols-2">
+                    <div class="mt-12 lg:mt-0">
+                        <h1
+                            class="mb-12 text-5xl font-bold tracking-tight text-[hsl(218,81%,95%)] md:text-6xl xl:text-7xl">
+                            Is your computer <br /><span class="text-[hsl(218,81%,75%)]">borked?</span>
+                        </h1>
+                        <p class="text-lg text-[hsl(218,81%,95%)]">
+                            Good news! They all are in some way.<br>The programming pages go through all of the new
+                            experiences that I have found while working on new
+                            projects. If you are interested in my experiences with new technologies, this section may be
+                            for you.<br>Check it out <a href="#"
+                                class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
+                                here!
+                            </a>
+                        </p>
+                    </div>
+                    <div class="mb-12 lg:mb-0">
+                        <div class="zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
+                            data-te-ripple-init data-te-ripple-color="light">
+                            <img src="{{.LatestProgramming.ImagePath}}"
+                                class="w-full align-middle transition duration-300 ease-linear" />
+                            <a href="{{.LatestProgramming.ArticlePath}}">
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.4)] bg-fixed">
+                                    <div class="flex h-full items-end justify-start">
+                                        <div class="m-6 text-white">
+                                            <h5 class="mb-3 text-lg font-bold">{{.LatestProgramming.Title}}</h5>
+                                            <p>
+                                                <small>Published <u>{{.LatestProgramming.Date}}</u> by
+                                                    {{.LatestProgramming.Author}}</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed transition duration-300 ease-in-out hover:bg-[hsla(0,0%,99%,0.15)]">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+    <!-- Section: Gaming Box -->
+    <section class="background-game-gradient">
+        <style>
+            .background-game-gradient {
+                background-color: hsl(43, 100%, 15%);
+                background-image: radial-gradient(650px circle at 0% 100%,
+                        hsl(43, 100%, 35%) 15%,
+                        hsl(43, 100%, 30%) 35%,
+                        hsl(43, 100%, 20%) 75%,
+                        hsl(43, 100%, 19%) 80%,
+                        transparent 100%),
+                    radial-gradient(1250px circle at 100% 0%,
+                        hsl(43, 100%, 35%) 15%,
+                        hsl(43, 100%, 30%) 35%,
+                        hsl(43, 100%, 20%) 75%,
+                        hsl(43, 100%, 19%) 80%,
+                        transparent 100%);
+            }
+        </style>
+
+        <div class="px-6 py-12 text-center md:px-12 lg:text-left">
+            <div class="container mx-auto">
+                <div class="grid items-center gap-12 lg:grid-cols-2">
+                    <div class="mb-12 lg:mb-0">
+                        <div class="zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
+                            data-te-ripple-init data-te-ripple-color="light">
+                            <img src="{{.LatestGame.ImagePath}}"
+                                class="w-full align-middle transition duration-300 ease-linear" />
+                            <a href="{{.LatestGame.ArticlePath}}">
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.4)] bg-fixed">
+                                    <div class="flex h-full items-end justify-start">
+                                        <div class="m-6 text-white">
+                                            <h5 class="mb-3 text-lg font-bold">{{.LatestGame.Title}}</h5>
+                                            <p>
+                                                <small>Published <u>{{.LatestGame.Date}}</u> by
+                                                    {{.LatestGame.Author}}</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed transition duration-300 ease-in-out hover:bg-[hsla(0,0%,99%,0.15)]">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-12 lg:mt-0">
+                        <h1
+                            class="mb-12 text-5xl font-bold tracking-tight text-[hsl(218,81%,95%)] md:text-6xl xl:text-7xl">
+                            But can it run <br /><span class="text-[hsl(54,89%,56%)]">Doom?</span>
+                        </h1>
+                        <p class="text-lg text-[hsl(218,81%,95%)]">
+                            If it can't, you need a new one. The game pages are about the games I have experienced and
+                            enjoyed, with reviews and ratings for entertainment purposes.
+                            <br>Check it out <a href="#"
+                                class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
+                                here!
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+    <!-- Section: Stories Box -->
+    <section class="background-story-gradient">
+        <style>
+            .background-story-gradient {
+                background-color: hsl(152, 41%, 15%);
+                background-image: radial-gradient(650px circle at 0% 0%,
+                        hsl(152, 41%, 35%) 15%,
+                        hsl(152, 41%, 30%) 35%,
+                        hsl(152, 41%, 20%) 75%,
+                        hsl(152, 41%, 19%) 80%,
+                        transparent 100%),
+                    radial-gradient(1250px circle at 100% 100%,
+                        hsl(152, 41%, 35%) 15%,
+                        hsl(152, 41%, 30%) 35%,
+                        hsl(152, 41%, 20%) 75%,
+                        hsl(152, 41%, 19%) 80%,
+                        transparent 100%);
+            }
+        </style>
+
+        <div class="px-6 py-12 text-center md:px-12 lg:text-left">
+            <div class="container mx-auto">
+                <div class="grid items-center gap-12 lg:grid-cols-2">
+                    <div class="mt-12 lg:mt-0">
+                        <h1
+                            class="mb-12 text-5xl font-bold tracking-tight text-[hsl(218,81%,95%)] md:text-6xl xl:text-7xl">
+                            Ready for a <br /><span class="text-[hsl(150,42%,62%)]">story?</span>
+                        </h1>
+                        <p class="text-lg text-[hsl(218,81%,95%)]">
+                            I have never been good at creative writing. I struggle to describe the imagery in my mind in
+                            words, so I often don't. The story pages are my works of creative writing to help me improve
+                            my writing skills. Hopefully, I will be able to make some... err... <i>*checks
+                                thesaurus*</i> some
+                            <b>titillating</b> stories.
+                            <br>Check it out <a href="#"
+                                class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
+                                here!
+                            </a>
+                        </p>
+                    </div>
+                    <div class="mb-12 lg:mb-0">
+                        <div class="zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
+                            data-te-ripple-init data-te-ripple-color="light">
+                            <img src="{{.LatestTale.ImagePath}}"
+                                class="w-full align-middle transition duration-300 ease-linear" />
+                            <a href="{{.LatestTale.ArticlePath}}">
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.4)] bg-fixed">
+                                    <div class="flex h-full items-end justify-start">
+                                        <div class="m-6 text-white">
+                                            <h5 class="mb-3 text-lg font-bold">{{.LatestTale.Title}}</h5>
+                                            <p>
+                                                <small>Published <u>{{.LatestTale.Date}}</u> by
+                                                    {{.LatestTale.Author}}</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed transition duration-300 ease-in-out hover:bg-[hsla(0,0%,99%,0.15)]">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+</div>
+{{end}}

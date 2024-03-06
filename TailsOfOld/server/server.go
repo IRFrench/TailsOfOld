@@ -2,7 +2,7 @@ package server
 
 import (
 	filesystem "TailsOfOld"
-	"TailsOfOld/TailsOfOld/routes/basic"
+	"TailsOfOld/TailsOfOld/routes/index"
 	"context"
 	"fmt"
 	"io/fs"
@@ -52,7 +52,7 @@ func CreateServer(address string) (*WebServer, error) {
 	router.Handle("/static/*", staticHandler)
 
 	// Add routes here
-	basic.AddIndexRoutes(router)
+	index.AddIndexRoutes(router)
 
 	// Add WebServer Deps 'ere
 
