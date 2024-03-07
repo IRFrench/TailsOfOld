@@ -12,7 +12,7 @@ server.build: ## Building the dependencies
 	CGO_ENABLED=0 go build -o ./build/tailsOfOld ./cmd/TailsOfOld/main.go
 
 server.run: ## Run prod server
-	./build/tailsOfOld
+	./build/tailsOfOld serve
 
 article.create: ## Build article tool
 	CGO_ENABLED=0 go build -o ./build/article ./cmd/article/create/main.go

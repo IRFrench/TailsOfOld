@@ -14,4 +14,6 @@ Each section should be designed to be eye catching and overview what is in this 
 
 ### Sections
 
-Each section should be unique and independent from everything else.
+Each section should be unique and independent from everything else. Different colour schemes so you know what section you are in by colour alone.
+
+Each section should have its own articles page, showing all of the articles for the section. This will allow you to look through and read any articles.

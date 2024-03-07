@@ -3,9 +3,12 @@ package index
 import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/TailsOfOld/handlers"
+	"fmt"
 	"html/template"
 	"net/http"
 	"time"
+
+	"github.com/pocketbase/pocketbase"
 )
 
 type IndexVariables struct {
@@ -22,7 +25,11 @@ type ArticleInfo struct {
 	ArticlePath string
 }
 
-func IndexHttp(response http.ResponseWriter, request *http.Request) {
+type IndexHandler struct {
+	Database *pocketbase.PocketBase
+}
+
+func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	templatePath := "TailsOfOld/static/templates/index/index.html"
 	template := template.New("index.html")
 
@@ -30,6 +37,8 @@ func IndexHttp(response http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println(i.Database.Dao().FindRecordById("Articles", "j3e75qo8aejrjm8"))
 
 	vars := IndexVariables{
 		LatestProgramming: ArticleInfo{

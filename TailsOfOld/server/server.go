@@ -9,6 +9,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/pocketbase/pocketbase"
 )
 
 type WebServer struct {
@@ -30,7 +31,7 @@ func (s *WebServer) Shutdown() error {
 	return nil
 }
 
-func CreateServer(address string) (*WebServer, error) {
+func CreateServer(address string, database *pocketbase.PocketBase) (*WebServer, error) {
 	router := chi.NewRouter()
 
 	// Add static route
@@ -52,10 +53,9 @@ func CreateServer(address string) (*WebServer, error) {
 	router.Handle("/static/*", staticHandler)
 
 	// Add routes here
-	index.AddIndexRoutes(router)
+	index.AddIndexRoutes(router, database)
 
 	// Add WebServer Deps 'ere
-
 	return &WebServer{
 		server: &http.Server{
 			Addr:    address,
