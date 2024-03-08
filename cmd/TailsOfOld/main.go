@@ -80,7 +80,7 @@ func makeDatabase() *pocketbase.PocketBase {
 		return nil
 	})
 
-	app.OnModelAfterCreate("Articles").Add(func(e *core.ModelEvent) error {
+	app.OnModelAfterCreate("articles").Add(func(e *core.ModelEvent) error {
 		article, err := app.Dao().FindRecordById("articles", e.Model.GetId())
 		if err != nil {
 			slog.Error("failed to find created article", err)

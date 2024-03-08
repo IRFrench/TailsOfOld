@@ -1,0 +1,55 @@
+{{define "js"}}
+{{end}}
+{{define "content"}}
+<div class="dark:bg-neutral-700">
+    <section class="py-32 text-center">
+        <div class="flex justify-center">
+            <div class="max-w-[800px]">
+                <h2 class="mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl dark:text-white">
+                    Welcome to the <br />
+                    <span class="text-cyan-500 dark:text-yellow-500">{{.Section}} Section</span>
+                </h2>
+                <p class="text-lg text-neutral-500 dark:text-neutral-300">
+                    Come check out some of the latest articles!
+                </p>
+                <div class="mt-4 flex justify-center">
+                    <a href="#articles">
+                        <svg class="w-6" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path
+                                d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pb-32 pt-4 text-center md:text-left" id="articles">
+        {{range .Articles}}
+        <div class="mb-6 flex flex-wrap">
+            <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
+                <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
+                    data-te-ripple-init data-te-ripple-color="light">
+                    <img src="{{.ImagePath}}" class="w-full" alt="Louvre" />
+                    <a href="{{.ArticlePath}}">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
+                <h5 class="mb-3 text-lg font-bold text-black dark:text-white">{{.Title}}</h5>
+                <p class="mb-6 text-neutral-500 dark:text-neutral-300">
+                    <small>Published <u>{{.Date}}</u> by {{.Author}}</small>
+                </p>
+                <p class="text-neutral-500 dark:text-neutral-300">
+                    {{.Description}}
+                </p>
+            </div>
+        </div>
+        {{end}}
+    </section>
+</div>
+{{end}}

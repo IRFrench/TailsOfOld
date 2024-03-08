@@ -1,5 +1,5 @@
 {{define "nav"}}
-<div class="dark:bg-neutral-600">
+<div class="bg-neutral-100 dark:bg-neutral-600">
     <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:py-4 bg-transparent">
         <div class="flex w-full flex-wrap items-center justify-between px-3">
@@ -10,22 +10,18 @@
                     href="/">
                     <img src="/static/img/logo.png" style="height: 50px" alt="TE Logo" loading="lazy" />
                 </a>
-                <!-- Left navigation links -->
                 <ul class="list-style-none me-auto flex flex-col ps-0 lg:flex-row" data-twe-navbar-nav-ref>
                     <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                        <!-- Dashboard link -->
                         <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="#" data-twe-nav-link-ref>Programming</a>
+                            href="/programming" data-twe-nav-link-ref>Programming</a>
                     </li>
-                    <!-- Team link -->
                     <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
                         <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="#" data-twe-nav-link-ref>Games</a>
+                            href="/games" data-twe-nav-link-ref>Games</a>
                     </li>
-                    <!-- Projects link -->
                     <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
                         <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="#" data-twe-nav-link-ref>Tales</a>
+                            href="/tales" data-twe-nav-link-ref>Tales</a>
                     </li>
                     <!-- Darkmode -->
                     <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
@@ -33,7 +29,6 @@
                             onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
                     </li>
                 </ul>
-                <!-- Left links -->
             </div>
             <div class="ml-5 flex w-[30%] items-center justify-between">
                 <input type="search"

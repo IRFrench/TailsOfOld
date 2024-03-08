@@ -2,6 +2,7 @@ package server
 
 import (
 	filesystem "TailsOfOld"
+	"TailsOfOld/TailsOfOld/routes/articles"
 	"TailsOfOld/TailsOfOld/routes/index"
 	"context"
 	"fmt"
@@ -54,6 +55,7 @@ func CreateServer(address string, database *pocketbase.PocketBase) (*WebServer, 
 
 	// Add routes here
 	index.AddIndexRoutes(router, database)
+	articles.AddArticleRoutes(router, database)
 
 	// Add WebServer Deps 'ere
 	return &WebServer{

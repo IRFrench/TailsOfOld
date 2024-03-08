@@ -3,26 +3,21 @@ package index
 import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/TailsOfOld/handlers"
+	"TailsOfOld/TailsOfOld/section"
 	"fmt"
 	"html/template"
+	"log/slog"
 	"net/http"
+	"net/url"
 	"time"
 
 	"github.com/pocketbase/pocketbase"
 )
 
 type IndexVariables struct {
-	LatestGame        ArticleInfo
-	LatestProgramming ArticleInfo
-	LatestTale        ArticleInfo
-}
-
-type ArticleInfo struct {
-	Title       string
-	Date        string
-	Author      string
-	ImagePath   string
-	ArticlePath string
+	LatestGame        section.ArticleInfo
+	LatestProgramming section.ArticleInfo
+	LatestTale        section.ArticleInfo
 }
 
 type IndexHandler struct {
@@ -30,41 +25,59 @@ type IndexHandler struct {
 }
 
 func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
+	// Build template
 	templatePath := "TailsOfOld/static/templates/index/index.html"
 	template := template.New("index.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)
 	if err != nil {
+		slog.Error("Failed to parse file system into template", err)
 		panic(err)
 	}
 
-	fmt.Println(i.Database.Dao().FindRecordById("Articles", "j3e75qo8aejrjm8"))
+	// Collect latest articles
+	latestGamesArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'games'", "-created", 1, 0)
+	if err != nil {
+		slog.Error("Failed to gather latest games article from database", err)
+		panic(err)
+	}
+	latestProgrammingArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'programming'", "-created", 1, 0)
+	if err != nil {
+		slog.Error("Failed to gather latest programming article from database", err)
+		panic(err)
+	}
+	latestTalesArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'tales'", "-created", 1, 0)
+	if err != nil {
+		slog.Error("Failed to gather latest tales article from database", err)
+		panic(err)
+	}
 
 	vars := IndexVariables{
-		LatestProgramming: ArticleInfo{
-			Title:       "Test Article Title",
-			Date:        time.Now().Format(time.DateOnly),
-			Author:      "Isaac French",
-			ImagePath:   "/static/img/logo.png",
-			ArticlePath: "#",
+		LatestProgramming: section.ArticleInfo{
+			Title:       latestProgrammingArticle[0].GetString("title"),
+			Date:        latestProgrammingArticle[0].GetCreated().Time().Format(time.DateOnly),
+			Author:      latestProgrammingArticle[0].GetString("author"),
+			ImagePath:   latestProgrammingArticle[0].GetString("imagepath"),
+			ArticlePath: fmt.Sprintf("/%v/%v", section.PROGRAMMING_SECTION, url.PathEscape(latestProgrammingArticle[0].GetString("title"))),
 		},
-		LatestGame: ArticleInfo{
-			Title:       "Test Game Title",
-			Date:        time.Now().Format(time.DateOnly),
-			Author:      "Isaac French",
-			ImagePath:   "https://image.api.playstation.com/vulcan/ap/rnd/202309/0718/ca77865b4bc8a1ea110fbe1492f7de8f80234dd079fc181a.png",
-			ArticlePath: "#",
+		LatestGame: section.ArticleInfo{
+			Title:       latestGamesArticle[0].GetString("title"),
+			Date:        latestGamesArticle[0].GetCreated().Time().Format(time.DateOnly),
+			Author:      latestGamesArticle[0].GetString("author"),
+			ImagePath:   latestGamesArticle[0].GetString("imagepath"),
+			ArticlePath: fmt.Sprintf("/%v/%v", section.GAME_SECTION, url.PathEscape(latestGamesArticle[0].GetString("title"))),
 		},
-		LatestTale: ArticleInfo{
-			Title:       "Test Story Title",
-			Date:        time.Now().Format(time.DateOnly),
-			Author:      "Isaac French",
-			ImagePath:   "/static/img/book_pup.jpeg",
-			ArticlePath: "#",
+		LatestTale: section.ArticleInfo{
+			Title:       latestTalesArticle[0].GetString("title"),
+			Date:        latestTalesArticle[0].GetCreated().Time().Format(time.DateOnly),
+			Author:      latestTalesArticle[0].GetString("author"),
+			ImagePath:   latestTalesArticle[0].GetString("imagepath"),
+			ArticlePath: fmt.Sprintf("/%v/%v", section.TALES_SECTION, url.PathEscape(latestTalesArticle[0].GetString("title"))),
 		},
 	} //define an instance with required field
 
 	if err := template.ExecuteTemplate(response, "base", vars); err != nil {
+		slog.Error("Failed to execute template", err)
 		panic(err)
 	}
 }
