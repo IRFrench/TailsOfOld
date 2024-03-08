@@ -1,6 +1,3 @@
-$("body").addClass(localStorage.theme)
-console.log(localStorage.theme)
-
 function toggleTheme() {
     var body = $("body")
     if (body.hasClass("dark")) {
@@ -12,4 +9,12 @@ function toggleTheme() {
     body.removeClass("light")
     body.addClass("dark")
     localStorage.theme = "dark"
+}
+
+if (localStorage.theme) {
+    $("body").addClass(localStorage.theme)
+} else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        $("body").addClass("dark")
+    }
 }

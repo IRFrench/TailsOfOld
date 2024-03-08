@@ -1,9 +1,9 @@
 package main
 
 import (
+	"TailsOfOld/TailsOfOld/db"
 	"TailsOfOld/TailsOfOld/server"
 	"TailsOfOld/cfg"
-	"fmt"
 	"log/slog"
 	"os"
 	"os/signal"
@@ -73,24 +73,14 @@ func makeDatabase() *pocketbase.PocketBase {
 			DefaultDataDir: "./database/pb_data",
 		},
 	)
-
 	// serves static files from the provided public dir (if exists)
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		e.Router.GET("/*", apis.StaticDirectoryHandler(os.DirFS("./database/pb_public"), false))
 		return nil
 	})
 
-	app.OnModelAfterCreate("articles").Add(func(e *core.ModelEvent) error {
-		article, err := app.Dao().FindRecordById("articles", e.Model.GetId())
-		if err != nil {
-			slog.Error("failed to find created article", err)
-			return nil
-		}
-		title := article.GetString("title")
-		section := article.GetString("section")
-		if err := os.WriteFile(fmt.Sprintf("TailsOfOld/static/templates/articles/%v/%v.html", section, title), nil, os.ModePerm); err != nil {
-			slog.Error("failed to create file", err)
-		}
+	app.OnModelAfterCreate(db.DB_ARTICLES).Add(func(e *core.ModelEvent) error {
+		// Emails??
 		return nil
 	})
 

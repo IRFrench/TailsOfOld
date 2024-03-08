@@ -2,8 +2,8 @@ package index
 
 import (
 	filesystem "TailsOfOld"
+	"TailsOfOld/TailsOfOld/db"
 	"TailsOfOld/TailsOfOld/handlers"
-	"TailsOfOld/TailsOfOld/section"
 	"fmt"
 	"html/template"
 	"log/slog"
@@ -15,9 +15,9 @@ import (
 )
 
 type IndexVariables struct {
-	LatestGame        section.ArticleInfo
-	LatestProgramming section.ArticleInfo
-	LatestTale        section.ArticleInfo
+	LatestGame        db.ArticleInfo
+	LatestProgramming db.ArticleInfo
+	LatestTale        db.ArticleInfo
 }
 
 type IndexHandler struct {
@@ -36,43 +36,43 @@ func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Requ
 	}
 
 	// Collect latest articles
-	latestGamesArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'games'", "-created", 1, 0)
+	latestGamesArticle, err := i.Database.Dao().FindRecordsByFilter(db.DB_ARTICLES, fmt.Sprintf("%v = '%v'", db.SECTION_COLUMN, db.GAME_SECTION), "-created", 1, 0)
 	if err != nil {
 		slog.Error("Failed to gather latest games article from database", err)
 		panic(err)
 	}
-	latestProgrammingArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'programming'", "-created", 1, 0)
+	latestProgrammingArticle, err := i.Database.Dao().FindRecordsByFilter(db.DB_ARTICLES, fmt.Sprintf("%v = '%v'", db.SECTION_COLUMN, db.PROGRAMMING_SECTION), "-created", 1, 0)
 	if err != nil {
 		slog.Error("Failed to gather latest programming article from database", err)
 		panic(err)
 	}
-	latestTalesArticle, err := i.Database.Dao().FindRecordsByFilter("articles", "section = 'tales'", "-created", 1, 0)
+	latestTalesArticle, err := i.Database.Dao().FindRecordsByFilter(db.DB_ARTICLES, fmt.Sprintf("%v = '%v'", db.SECTION_COLUMN, db.TALES_SECTION), "-created", 1, 0)
 	if err != nil {
 		slog.Error("Failed to gather latest tales article from database", err)
 		panic(err)
 	}
 
 	vars := IndexVariables{
-		LatestProgramming: section.ArticleInfo{
-			Title:       latestProgrammingArticle[0].GetString("title"),
+		LatestProgramming: db.ArticleInfo{
+			Title:       latestProgrammingArticle[0].GetString(db.TITLE_COLUMN),
 			Date:        latestProgrammingArticle[0].GetCreated().Time().Format(time.DateOnly),
-			Author:      latestProgrammingArticle[0].GetString("author"),
-			ImagePath:   latestProgrammingArticle[0].GetString("imagepath"),
-			ArticlePath: fmt.Sprintf("/%v/%v", section.PROGRAMMING_SECTION, url.PathEscape(latestProgrammingArticle[0].GetString("title"))),
+			Author:      latestProgrammingArticle[0].GetString(db.AUTHOR_COLUMN),
+			ImagePath:   latestProgrammingArticle[0].GetString(db.IMAGEPATH_COLUMN),
+			ArticlePath: fmt.Sprintf("/%v/%v", db.PROGRAMMING_SECTION, url.PathEscape(latestProgrammingArticle[0].GetString("title"))),
 		},
-		LatestGame: section.ArticleInfo{
-			Title:       latestGamesArticle[0].GetString("title"),
+		LatestGame: db.ArticleInfo{
+			Title:       latestGamesArticle[0].GetString(db.TITLE_COLUMN),
 			Date:        latestGamesArticle[0].GetCreated().Time().Format(time.DateOnly),
-			Author:      latestGamesArticle[0].GetString("author"),
-			ImagePath:   latestGamesArticle[0].GetString("imagepath"),
-			ArticlePath: fmt.Sprintf("/%v/%v", section.GAME_SECTION, url.PathEscape(latestGamesArticle[0].GetString("title"))),
+			Author:      latestGamesArticle[0].GetString(db.AUTHOR_COLUMN),
+			ImagePath:   latestGamesArticle[0].GetString(db.IMAGEPATH_COLUMN),
+			ArticlePath: fmt.Sprintf("/%v/%v", db.GAME_SECTION, url.PathEscape(latestGamesArticle[0].GetString("title"))),
 		},
-		LatestTale: section.ArticleInfo{
-			Title:       latestTalesArticle[0].GetString("title"),
+		LatestTale: db.ArticleInfo{
+			Title:       latestTalesArticle[0].GetString(db.TITLE_COLUMN),
 			Date:        latestTalesArticle[0].GetCreated().Time().Format(time.DateOnly),
-			Author:      latestTalesArticle[0].GetString("author"),
-			ImagePath:   latestTalesArticle[0].GetString("imagepath"),
-			ArticlePath: fmt.Sprintf("/%v/%v", section.TALES_SECTION, url.PathEscape(latestTalesArticle[0].GetString("title"))),
+			Author:      latestTalesArticle[0].GetString(db.AUTHOR_COLUMN),
+			ImagePath:   latestTalesArticle[0].GetString(db.IMAGEPATH_COLUMN),
+			ArticlePath: fmt.Sprintf("/%v/%v", db.TALES_SECTION, url.PathEscape(latestTalesArticle[0].GetString("title"))),
 		},
 	} //define an instance with required field
 
