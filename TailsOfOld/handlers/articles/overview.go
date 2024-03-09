@@ -36,7 +36,7 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 	}
 
 	// Gather articles
-	databaseArticles, err := o.Database.Dao().FindRecordsByFilter(db.DB_ARTICLES, fmt.Sprintf("%v = '%v'", db.SECTION_COLUMN, o.Section), "-created", 0, 0)
+	databaseArticles, err := o.Database.Dao().FindRecordsByFilter(db.DB_ARTICLES, fmt.Sprintf("%v = '%v' && %v = true", db.SECTION_COLUMN, o.Section, db.LIVE_COLUMN), "-created", 0, 0)
 	if err != nil {
 		slog.Error("Failed to get articles from database", err)
 		panic(err)
@@ -50,7 +50,7 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 			Description: article.GetString(db.DESCRIPTION_COLUMN),
 			Date:        article.GetCreated().Time().Format(time.DateOnly),
 			Author:      article.GetString(db.AUTHOR_COLUMN),
-			ImagePath:   article.GetString(db.IMAGEPATH_COLUMN),
+			ImagePath:   fmt.Sprintf("/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(db.IMAGEPATH_COLUMN)),
 			ArticlePath: fmt.Sprintf("/%v/%v", o.Section, url.PathEscape(article.GetString(db.TITLE_COLUMN))),
 		})
 	}

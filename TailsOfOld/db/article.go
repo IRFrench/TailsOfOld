@@ -11,8 +11,9 @@ const (
 	DESCRIPTION_COLUMN = "description"
 	AUTHOR_COLUMN      = "author"
 	SECTION_COLUMN     = "section"
-	IMAGEPATH_COLUMN   = "imagepath"
+	IMAGEPATH_COLUMN   = "image"
 	ARTICLE_COLUMN     = "article"
+	LIVE_COLUMN        = "live"
 )
 
 type ArticleInfo struct {

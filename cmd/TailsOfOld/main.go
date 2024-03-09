@@ -35,10 +35,10 @@ func main() {
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
 	// Make the database
-	database := makeDatabase()
+	database := makeDatabase(config)
 
 	// Create the server
-	server, err := server.CreateServer(config.Web.Address, database)
+	server, err := server.CreateServer(config, database)
 	if err != nil {
 		slog.Error("Server could not be created", "Error", err)
 		return
@@ -67,10 +67,10 @@ func main() {
 	}
 }
 
-func makeDatabase() *pocketbase.PocketBase {
+func makeDatabase(config cfg.Configuration) *pocketbase.PocketBase {
 	app := pocketbase.NewWithConfig(
 		pocketbase.Config{
-			DefaultDataDir: "./database/pb_data",
+			DefaultDataDir: config.Database.DataDir,
 		},
 	)
 	// serves static files from the provided public dir (if exists)

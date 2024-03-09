@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 )
 
@@ -44,7 +45,8 @@ func (a ArticleHandler) ServeHTTP(response http.ResponseWriter, request *http.Re
 
 	article, err := a.Database.Dao().FindFirstRecordByFilter(
 		db.DB_ARTICLES,
-		fmt.Sprintf("%v = '%v' && %v = '%v'", db.TITLE_COLUMN, articleTitle, db.SECTION_COLUMN, a.Section),
+		fmt.Sprintf("%v = {:title} && %v = '%v'", db.TITLE_COLUMN, db.SECTION_COLUMN, a.Section),
+		dbx.Params{"title": articleTitle},
 	)
 	if err != nil {
 		slog.Error("Failed to find article", err)
@@ -55,7 +57,7 @@ func (a ArticleHandler) ServeHTTP(response http.ResponseWriter, request *http.Re
 		Title:     article.GetString(db.TITLE_COLUMN),
 		Author:    article.GetString(db.AUTHOR_COLUMN),
 		Section:   article.GetString(db.SECTION_COLUMN),
-		ImagePath: article.GetString(db.IMAGEPATH_COLUMN),
+		ImagePath: fmt.Sprintf("/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(db.IMAGEPATH_COLUMN)),
 		Article:   article.GetString(db.ARTICLE_COLUMN),
 		Created:   article.GetCreated().Time().Format(time.DateOnly),
 		Updated:   article.GetUpdated().Time().Format(time.DateOnly),

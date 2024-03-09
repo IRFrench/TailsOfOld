@@ -2,7 +2,7 @@
 {{end}}
 {{define "content"}}
 <div class="dark:bg-neutral-700">
-    <section class="py-32 text-center">
+    <section class="py-16 text-center">
         <div class="flex justify-center">
             <div class="max-w-[800px]">
                 <h2 class="mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl dark:text-white">
@@ -24,6 +24,7 @@
             </div>
         </div>
     </section>
+    <div class="mb-6" id="articles"></div>
     <section class="pb-32 px-16 2xl:px-32 text-center">
         <div class="grid gap-6 lg:grid-cols-3 xl:gap-x-12">
             {{range .Articles}}

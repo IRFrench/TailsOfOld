@@ -4,9 +4,11 @@ import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/TailsOfOld/routes/articles"
 	"TailsOfOld/TailsOfOld/routes/index"
+	"TailsOfOld/cfg"
 	"context"
 	"fmt"
 	"io/fs"
+	"log/slog"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -32,7 +34,7 @@ func (s *WebServer) Shutdown() error {
 	return nil
 }
 
-func CreateServer(address string, database *pocketbase.PocketBase) (*WebServer, error) {
+func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*WebServer, error) {
 	router := chi.NewRouter()
 
 	// Add static route
@@ -43,15 +45,20 @@ func CreateServer(address string, database *pocketbase.PocketBase) (*WebServer, 
 
 	fs.WalkDir(staticFiles, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
-			fmt.Println("failed")
+			slog.Error("Failed to walk files", err)
 		}
 		fmt.Println(path)
 		return nil
 	})
 
+	// Create static handler
 	httpFileSystem := http.FS(staticFiles)
 	staticHandler := http.FileServer(httpFileSystem)
 	router.Handle("/static/*", staticHandler)
+
+	// Create database handler
+	databaseHandler := http.FileServer(http.Dir(config.Database.DataDir))
+	router.Handle("/pb_data/*", http.StripPrefix("/pb_data", databaseHandler))
 
 	// Add routes here
 	index.AddIndexRoutes(router, database)
@@ -61,7 +68,7 @@ func CreateServer(address string, database *pocketbase.PocketBase) (*WebServer, 
 	// Add WebServer Deps 'ere
 	return &WebServer{
 		server: &http.Server{
-			Addr:    address,
+			Addr:    config.Web.Address,
 			Handler: router,
 		},
 	}, nil

@@ -22,8 +22,7 @@ type Web struct {
 }
 
 type Database struct {
-	Address string `yaml:"address"`
-	Token   string `yaml:"token"`
+	DataDir string `yaml:"data_dir"`
 }
 
 func LoadConfig(filePath string) (Configuration, error) {

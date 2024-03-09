@@ -1,34 +1,27 @@
 {{define "js"}}
+<script src="/static/js/article.js" defer></script>
 {{end}}
 {{define "content"}}
 <div class="dark:bg-neutral-700 min-h-screen">
     <section class="px-32 py-16 2xl:px-64 2xl:py-32">
-        <img src="{{.ImagePath}}" class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20 max-h-96 object-cover"
-            alt="image" />
+        <img src="{{.ImagePath}}" class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20 object-cover" alt="image"
+            style="max-height: 50vh;" />
 
-        <div class="grid grid-cols-2 w-full mb-6 text-neutral-600 dark:text-neutral-300">
+        <div class="grid grid-cols-2 w-full text-neutral-600 dark:text-neutral-300">
             <span class="justify-self-start"> Published <u>{{.Created}}</u> by {{.Author}}</span>
-            <span class="justify-self-end"> Last Updated <u>{{.Updated}}</u></span>
+            <span class="justify-self-end"> Updated On <u>{{.Updated}}</u></span>
+        </div>
+        <div class="mb-6 text-neutral-600 dark:text-neutral-300 text-sm">
+            <i id="read-time"></i>
         </div>
 
         <div class="text-black dark:text-white">
             <h1 class="mb-8 text-3xl font-bold">
-                An intriguing title for an interesting article
+                {{.Title}}
             </h1>
-
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
-                harum tempore cupiditate asperiores provident, itaque, quo ex iusto
-                rerum voluptatum delectus corporis quisquam maxime a ipsam nisi
-                sapiente qui optio! Dignissimos harum quod culpa officiis suscipit
-                soluta labore! Expedita quas, nesciunt similique autem, sunt,
-                doloribus pariatur maxime qui sint id enim. Placeat, maxime labore.
-                Dolores ex provident ipsa impedit, omnis magni earum. Sed fuga ex
-                ducimus consequatur corporis, architecto nesciunt vitae ipsum
-                consequuntur perspiciatis nulla esse voluptatem quos dolorum delectus
-                similique eum vero in est velit quasi pariatur blanditiis incidunt
-                quam.
-            </p>
+            <div id="article">
+                {{.Article}}
+            </div>
         </div>
     </section>
 </div>
