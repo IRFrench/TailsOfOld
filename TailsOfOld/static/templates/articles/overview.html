@@ -1,13 +1,13 @@
 {{define "js"}}
 {{end}}
 {{define "content"}}
-<div class="dark:bg-neutral-700">
+<div class="min-h-screen bg-neutral-100 dark:bg-neutral-700">
     <section class="py-16 text-center">
         <div class="flex justify-center">
             <div class="max-w-[800px]">
                 <h2 class="mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl dark:text-white">
                     Welcome to the <br />
-                    <span class="text-cyan-500 dark:text-yellow-500">{{.Section}} Section</span>
+                    <span class="text-purple-600 dark:text-yellow-500">{{.Section}} Section</span>
                 </h2>
                 <p class="text-lg text-neutral-500 dark:text-neutral-300">
                     Come check out some of the latest articles!
@@ -30,7 +30,7 @@
             {{range .Articles}}
             <div class="mb-6 lg:mb-0">
                 <div
-                    class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-600">
+                    class="relative block rounded-lg bg-white shadow-lg dark:shadow-md shadow-purple-600 dark:shadow-yellow-400 dark:bg-neutral-600">
                     <div class="flex justify-center">
                         <div class="relative mx-4 -mt-4 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
                             data-te-ripple-init data-te-ripple-color="light">
@@ -45,7 +45,7 @@
                     <div class="p-6">
                         <h5 class="mb-3 text-lg font-bold dark:text-white">{{.Title}}</h5>
                         <p class="mb-4 text-neutral-500 dark:text-neutral-300">
-                            <small>Published <u>{{.Date}}</u> by {{.Author}}</small>
+                            <small>Published <u>{{.Created}}</u> by {{.Author}}</small>
                         </p>
                         <p class="mb-4 pb-2 dark:text-white">
                             {{.Description}}

@@ -1,7 +1,7 @@
 {{define "js"}}
 {{end}}
 {{define "content"}}
-<div class="dark:bg-slate-800">
+<div class="min-h-screen bg-neutral-100 dark:bg-slate-800">
     <!-- Section: Programming Box -->
     <section class="background-program-gradient">
         <style>
@@ -52,7 +52,7 @@
                                         <div class="m-6 text-white">
                                             <h5 class="mb-3 text-lg font-bold">{{.LatestProgramming.Title}}</h5>
                                             <p>
-                                                <small>Published <u>{{.LatestProgramming.Date}}</u> by
+                                                <small>Published <u>{{.LatestProgramming.Created}}</u> by
                                                     {{.LatestProgramming.Author}}</small>
                                             </p>
                                         </div>
@@ -69,7 +69,7 @@
         </div>
     </section>
     <hr
-        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
     <!-- Section: Gaming Box -->
     <section class="background-game-gradient">
         <style>
@@ -105,7 +105,7 @@
                                         <div class="m-6 text-white">
                                             <h5 class="mb-3 text-lg font-bold">{{.LatestGame.Title}}</h5>
                                             <p>
-                                                <small>Published <u>{{.LatestGame.Date}}</u> by
+                                                <small>Published <u>{{.LatestGame.Created}}</u> by
                                                     {{.LatestGame.Author}}</small>
                                             </p>
                                         </div>
@@ -136,7 +136,7 @@
         </div>
     </section>
     <hr
-        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-cyan-400 to-transparent dark:via-yellow-400" />
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
     <!-- Section: Stories Box -->
     <section class="background-story-gradient">
         <style>
@@ -189,7 +189,7 @@
                                         <div class="m-6 text-white">
                                             <h5 class="mb-3 text-lg font-bold">{{.LatestTale.Title}}</h5>
                                             <p>
-                                                <small>Published <u>{{.LatestTale.Date}}</u> by
+                                                <small>Published <u>{{.LatestTale.Created}}</u> by
                                                     {{.LatestTale.Author}}</small>
                                             </p>
                                         </div>

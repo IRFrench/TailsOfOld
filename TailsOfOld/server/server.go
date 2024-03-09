@@ -4,15 +4,16 @@ import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/TailsOfOld/routes/articles"
 	"TailsOfOld/TailsOfOld/routes/index"
+	"TailsOfOld/TailsOfOld/routes/search"
+	weberrors "TailsOfOld/TailsOfOld/routes/web_errors"
 	"TailsOfOld/cfg"
 	"context"
-	"fmt"
 	"io/fs"
-	"log/slog"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/pocketbase/pocketbase"
+	"github.com/rs/zerolog/log"
 )
 
 type WebServer struct {
@@ -45,9 +46,9 @@ func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*W
 
 	fs.WalkDir(staticFiles, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
-			slog.Error("Failed to walk files", err)
+			log.Error().Err(err).Msg("failed to walk static files")
 		}
-		fmt.Println(path)
+		log.Debug().Msg(path)
 		return nil
 	})
 
@@ -64,6 +65,8 @@ func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*W
 	index.AddIndexRoutes(router, database)
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
+	search.AddSearchRoutes(router, database)
+	weberrors.AddErrorRoutes(router)
 
 	// Add WebServer Deps 'ere
 	return &WebServer{

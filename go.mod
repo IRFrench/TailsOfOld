@@ -5,7 +5,9 @@ go 1.21.1
 require github.com/go-chi/chi/v5 v5.0.10
 
 require (
+	github.com/pocketbase/dbx v1.10.1
 	github.com/pocketbase/pocketbase v0.22.3
+	github.com/rs/zerolog v1.32.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -56,7 +58,6 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.22 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
-	github.com/pocketbase/dbx v1.10.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/spf13/cast v1.6.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect

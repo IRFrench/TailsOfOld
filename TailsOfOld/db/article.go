@@ -18,9 +18,12 @@ const (
 
 type ArticleInfo struct {
 	Title       string
+	Section     string
 	Description string
-	Date        string
+	Created     string
+	Updated     string
 	Author      string
 	ImagePath   string
 	ArticlePath string
+	Article     string
 }
