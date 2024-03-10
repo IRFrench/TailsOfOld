@@ -37,6 +37,12 @@ func (s *WebServer) Shutdown() error {
 
 func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*WebServer, error) {
 	router := chi.NewRouter()
+	newServer := &WebServer{
+		server: &http.Server{
+			Addr:    config.Web.Address,
+			Handler: router,
+		},
+	}
 
 	// Add static route
 	staticFiles, err := filesystem.Static()
@@ -62,6 +68,11 @@ func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*W
 	router.Handle("/pb_data/*", http.StripPrefix("/pb_data", databaseHandler))
 
 	// Add routes here
+	if config.Web.Maintence {
+		weberrors.AddMaintenceRoute(router)
+		return newServer, nil
+	}
+
 	index.AddIndexRoutes(router, database)
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
@@ -69,10 +80,5 @@ func CreateServer(config cfg.Configuration, database *pocketbase.PocketBase) (*W
 	weberrors.AddErrorRoutes(router)
 
 	// Add WebServer Deps 'ere
-	return &WebServer{
-		server: &http.Server{
-			Addr:    config.Web.Address,
-			Handler: router,
-		},
-	}, nil
+	return newServer, nil
 }

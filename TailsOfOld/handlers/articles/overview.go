@@ -55,6 +55,12 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 			return
 		}
 
+		newFlag := false
+		articleCreationDate := article.GetCreated().Time()
+		if time.Now().Before(articleCreationDate.Add(24 * time.Hour)) {
+			newFlag = true
+		}
+
 		allArticles = append(allArticles, db.ArticleInfo{
 			Title:       article.GetString(db.TITLE_COLUMN),
 			Description: article.GetString(db.DESCRIPTION_COLUMN),
@@ -62,6 +68,7 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 			Author:      articleAuthor.GetString(db.NAME_COLUMN),
 			ImagePath:   fmt.Sprintf("/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(db.IMAGEPATH_COLUMN)),
 			ArticlePath: fmt.Sprintf("/%v/%v", o.Section, url.PathEscape(article.GetString(db.TITLE_COLUMN))),
+			New:         newFlag,
 		})
 	}
 

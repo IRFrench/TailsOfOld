@@ -26,4 +26,5 @@ type ArticleInfo struct {
 	ImagePath   string
 	ArticlePath string
 	Article     string
+	New         bool
 }

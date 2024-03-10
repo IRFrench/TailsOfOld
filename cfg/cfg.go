@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 
+	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v3"
 )
 
@@ -18,7 +19,8 @@ type Configuration struct {
 }
 
 type Web struct {
-	Address string `yaml:"address"`
+	Address   string `yaml:"address"`
+	Maintence bool   `yaml:"maintence"`
 }
 
 type Database struct {
@@ -36,6 +38,12 @@ func LoadConfig(filePath string) (Configuration, error) {
 	if err = yaml.Unmarshal(configFile, &configuration); err != nil {
 		return configuration, ErrUnableToParseConfig
 	}
+
+	log.Info().
+		Str("web address", configuration.Web.Address).
+		Bool("maintence", configuration.Web.Maintence).
+		Str("database dir", configuration.Database.DataDir).
+		Msg("configuration loaded")
 
 	return configuration, nil
 }

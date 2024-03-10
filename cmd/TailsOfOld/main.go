@@ -31,11 +31,6 @@ func main() {
 		return
 	}
 
-	log.Info().
-		Str("web address", config.Web.Address).
-		Str("database dir", config.Database.DataDir).
-		Msg("configuration loaded")
-
 	// Setup channels
 	errorLog := make(chan error)
 

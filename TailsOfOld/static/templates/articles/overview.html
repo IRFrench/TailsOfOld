@@ -14,10 +14,12 @@
                 </p>
                 <div class="mt-4 flex justify-center">
                     <a href="#articles">
-                        <svg class="w-6" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <svg class="w-8 h-8 fill-neutral-500 dark:fill-neutral-300" viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path
-                                d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z" />
+                                d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z">
+                            </path>
                         </svg>
                     </a>
                 </div>
@@ -43,7 +45,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h5 class="mb-3 text-lg font-bold dark:text-white">{{.Title}}</h5>
+                        <h5 class="mb-3 text-lg font-bold dark:text-white">{{.Title}}
+                            {{if .New}}
+                            <span
+                                class="inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700 dark:bg-slate-900 dark:text-primary-500">New</span>
+                            {{end}}
+                        </h5>
                         <p class="mb-4 text-neutral-500 dark:text-neutral-300">
                             <small>Published <u>{{.Created}}</u> by {{.Author}}</small>
                         </p>
