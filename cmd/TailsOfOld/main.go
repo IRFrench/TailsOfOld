@@ -13,10 +13,6 @@ import (
 	"github.com/pocketbase/pocketbase"
 )
 
-const (
-	CONFIG_FILE = "config.yaml"
-)
-
 func main() {
 	// zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	zerolog.SetGlobalLevel(zerolog.DebugLevel)
@@ -25,7 +21,7 @@ func main() {
 	log.Info().Str("version", "0.1.0").Msg("building server")
 
 	// Read configuration
-	config, err := cfg.LoadConfig(CONFIG_FILE)
+	config, err := cfg.LoadConfig(os.Getenv("ETC"))
 	if err != nil {
 		log.Error().Err(err).Msg("failed to read configuration")
 		return
