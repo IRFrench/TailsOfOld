@@ -3841,6 +3841,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.hover\:no-underline:hover {
+  text-decoration-line: none;
+}
+
 .hover\:\!opacity-90:hover {
   opacity: 0.9 !important;
 }
@@ -3858,6 +3862,12 @@ input[type="range"]:active::-webkit-slider-thumb {
 .hover\:shadow-\[0_8px_9px_-4px_rgba\(59\2c 113\2c 202\2c 0\.3\)\2c 0_4px_18px_0_rgba\(59\2c 113\2c 202\2c 0\.2\)\]:hover {
   --tw-shadow: 0 8px 9px -4px rgba(59,113,202,0.3),0 4px 18px 0 rgba(59,113,202,0.2);
   --tw-shadow-colored: 0 8px 9px -4px var(--tw-shadow-color), 0 4px 18px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-none:hover {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -3980,6 +3990,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 .focus\:text-white:focus {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.focus\:no-underline:focus {
+  text-decoration-line: none;
 }
 
 .focus\:\!opacity-90:focus {
@@ -5259,6 +5273,10 @@ input[type="range"]:active::-webkit-slider-thumb {
     display: flex !important;
   }
 
+  .lg\:hidden {
+    display: none;
+  }
+
   .lg\:basis-auto {
     flex-basis: auto;
   }
@@ -5554,6 +5572,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   width: 1.5rem;
 }
 
+.\[\&\>svg\]\:w-7>svg {
+  width: 1.75rem;
+}
+
 .\[\&\>svg\]\:rotate-180>svg {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -5563,6 +5585,14 @@ input[type="range"]:active::-webkit-slider-thumb {
   fill: #737373;
 }
 
+.\[\&\>svg\]\:stroke-black\/50>svg {
+  stroke: rgb(0 0 0 / 0.5);
+}
+
 :is(.dark .dark\:\[\&\>svg\]\:fill-white>svg) {
   fill: #fff;
+}
+
+:is(.dark .dark\:\[\&\>svg\]\:stroke-neutral-200>svg) {
+  stroke: #e5e5e5;
 }
