@@ -18,3 +18,8 @@ if (localStorage.theme) {
         $("body").addClass("dark");
     }
 }
+
+function mobileNav() {
+    var mn = $("#mobile_nav");
+    mn.toggle()
+}

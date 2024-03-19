@@ -1,4 +1,4 @@
-{{define "js"}}
+{{define "head"}}
 {{end}}
 {{define "content"}}
 <div class="min-h-screen bg-neutral-100 dark:bg-neutral-700">
@@ -45,12 +45,14 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h5 class="mb-3 text-lg font-bold dark:text-white">{{.Title}}
+                        <div class="flex items-center justify-center mb-3 gap-2">
+                            <h5 class="text-lg font-bold dark:text-white">{{.Title}}
+                            </h5>
                             {{if .New}}
                             <span
                                 class="inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700 dark:bg-slate-900 dark:text-primary-500">New</span>
                             {{end}}
-                        </h5>
+                        </div>
                         <p class="mb-4 text-neutral-500 dark:text-neutral-300">
                             <small>Published <u>{{.Created}}</u> by {{.Author}}</small>
                         </p>

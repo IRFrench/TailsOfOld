@@ -6,7 +6,8 @@
             <button
                 class="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
                 type="button" data-twe-collapse-init data-twe-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"
+                onclick="mobileNav()">
                 <!-- Hamburger icon -->
                 <span class="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -67,5 +68,32 @@
     </nav>
     <hr
         class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
+</div>
+
+<div id="mobile_nav"
+    class="bg-white z-50 dark:bg-neutral-600 w-96 h-full fixed border-e-2 border-purple-600 dark:border-yellow-400 p-0 m-0"
+    hidden>
+    <ul class="list-style-none me-auto flex flex-col ps-0" data-twe-navbar-nav-ref>
+        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                href="/programming" data-twe-nav-link-ref>Programming</a>
+        </li>
+        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
+        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                href="/games" data-twe-nav-link-ref>Games</a>
+        </li>
+        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
+        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                href="/tales" data-twe-nav-link-ref>Tales</a>
+        </li>
+        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
+        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
+            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2 cursor-pointer"
+                onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
+        </li>
+        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
+    </ul>
 </div>
 {{end}}

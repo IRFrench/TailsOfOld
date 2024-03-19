@@ -57,7 +57,7 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 
 		newFlag := false
 		articleCreationDate := article.GetCreated().Time()
-		if time.Now().Before(articleCreationDate.Add(24 * time.Hour)) {
+		if time.Now().Before(articleCreationDate.Add((24 * time.Hour) * 31)) {
 			newFlag = true
 		}
 

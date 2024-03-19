@@ -1,9 +1,10 @@
-{{define "js"}}
+{{define "head"}}
 <script src="/static/js/article.js" defer></script>
+<link rel="stylesheet" href="/static/css/article.css">
 {{end}}
 {{define "content"}}
 <div class="min-h-screen px-28 bg-neutral-100 dark:bg-neutral-700">
-    <div class="dark:bg-neutral-600 bg-white shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-full">
+    <div class="dark:bg-neutral-600 bg-white shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-max">
         <section class="px-6 py-4 2xl:px-64 2xl:py-32">
             <img src="{{.Article.ImagePath}}" class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20 object-cover"
                 alt="image" style="max-height: 50vh;" />
@@ -23,7 +24,7 @@
                 <h1 class="mb-8 text-3xl font-bold">
                     {{.Article.Title}}
                 </h1>
-                <div id="article">
+                <div id="article" class="article">
                     {{.Article.Article}}
                 </div>
             </div>
