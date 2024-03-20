@@ -39,10 +39,9 @@ func (m *MailClient) SendNewsletter(database *pocketbase.PocketBase, since time.
 		allArticles = append(allArticles, db.ArticleInfo{
 			Title:       article.GetString(db.TITLE_COLUMN),
 			Section:     article.GetString(db.SECTION_COLUMN),
-			Description: article.GetString(db.DESCRIPTION_COLUMN),
 			Author:      author.GetString(db.NAME_COLUMN),
 			Created:     article.GetCreated().Time().Format(time.DateOnly),
-			ImagePath:   fmt.Sprintf("/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(db.IMAGEPATH_COLUMN)),
+			ImagePath:   fmt.Sprintf("www.tailsofold.com/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(db.IMAGEPATH_COLUMN)),
 			ArticlePath: fmt.Sprintf("www.tailsofold.com/%v/%v", article.GetString(db.SECTION_COLUMN), url.PathEscape(article.GetString(db.TITLE_COLUMN))),
 		})
 	}
