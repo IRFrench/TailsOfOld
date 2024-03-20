@@ -16,6 +16,7 @@ var (
 type Configuration struct {
 	Web      Web      `yaml:"web"`
 	Database Database `yaml:"database"`
+	Mail     Mail     `yaml:"mail"`
 }
 
 type Web struct {
@@ -25,6 +26,13 @@ type Web struct {
 
 type Database struct {
 	DataDir string `yaml:"data_dir"`
+}
+
+type Mail struct {
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+	Host     string `yaml:"host"`
+	Mailer   string `yaml:"mailer"`
 }
 
 func LoadConfig(filePath string) (Configuration, error) {

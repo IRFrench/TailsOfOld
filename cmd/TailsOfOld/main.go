@@ -23,7 +23,7 @@ func main() {
 	// Read configuration
 	config, err := cfg.LoadConfig(os.Getenv("ETC"))
 	if err != nil {
-		log.Error().Err(err).Msg("failed to read configuration")
+		log.Err(err).Msg("failed to read configuration")
 		return
 	}
 
@@ -39,7 +39,7 @@ func main() {
 	// Create the server
 	server, err := server.CreateServer(config, database)
 	if err != nil {
-		log.Error().Err(err).Msg("failed to create server")
+		log.Err(err).Msg("failed to create server")
 		return
 	}
 
@@ -54,12 +54,12 @@ func main() {
 	for {
 		select {
 		case err := <-errorLog:
-			log.Error().Err(err).Msg("server encountered an error")
+			log.Err(err).Msg("server encountered an error")
 			return
 		case sig := <-sigs:
 			log.Info().Str("signal", sig.String()).Msg("signal recieved")
 			if err := server.Shutdown(); err != nil {
-				log.Error().Err(err).Msg("error on shutdown")
+				log.Err(err).Msg("error on shutdown")
 			}
 			return
 		}

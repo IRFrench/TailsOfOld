@@ -14,5 +14,8 @@ server.build: ## Building the dependencies
 server.run: ## Run prod server
 	ETC=config.yaml ./build/tailsOfOld serve
 
+mail.test: ## Send a test email
+	CGO_ENABLED=0 ETC=config.yaml go run cmd/newsletter/main.go serve
+
 help: ## Show commands of the makefile (and any included files)
 	@awk 'BEGIN {FS = ":.*?## "}; /^[0-9a-zA-Z_.-]+:.*?## .*/ {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
