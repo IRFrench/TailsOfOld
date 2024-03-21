@@ -1,0 +1,66 @@
+.article h1 {
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.article h2 {
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.article h3 {
+    font-size: large;
+    font-weight: 700;
+}
+
+.article h4 {
+    font-size: medium;
+    font-weight: 700;
+}
+
+.article h5 {
+    font-size: smaller;
+    font-weight: 700;
+}
+
+.article h6 {
+    font-size: small;
+    font-weight: 700;
+}
+
+.article code {
+    background-color: rgb(212 212 212);
+    color: black;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    border-radius: 5px;
+}
+
+.article blockquote {
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.article blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+.article blockquote p {
+    display: inline;
+}
+
+a {
+    color: rgb(143, 174, 224);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(81, 136, 223);
+}

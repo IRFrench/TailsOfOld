@@ -1,16 +1,15 @@
 package main
 
 import (
-	"TailsOfOld/TailsOfOld/server"
 	"TailsOfOld/cfg"
+	"TailsOfOld/internal/db"
+	"TailsOfOld/tailsofold/server"
 	"os"
 	"os/signal"
 	"syscall"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
-
-	"github.com/pocketbase/pocketbase"
 )
 
 func main() {
@@ -34,7 +33,7 @@ func main() {
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
 	// Make the database
-	database := makeDatabase(config)
+	database := db.NewDatabase(config)
 
 	// Create the server
 	server, err := server.CreateServer(config, database)
@@ -44,7 +43,7 @@ func main() {
 	}
 
 	// Run the DB
-	go database.Start()
+	go database.Run()
 
 	// Run the server
 	log.Info().Str("address", config.Web.Address)
@@ -64,14 +63,4 @@ func main() {
 			return
 		}
 	}
-}
-
-func makeDatabase(config cfg.Configuration) *pocketbase.PocketBase {
-	app := pocketbase.NewWithConfig(
-		pocketbase.Config{
-			DefaultDataDir: config.Database.DataDir,
-		},
-	)
-
-	return app
 }

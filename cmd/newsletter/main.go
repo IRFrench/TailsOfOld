@@ -1,8 +1,8 @@
 package main
 
 import (
-	"TailsOfOld/TailsOfOld/newsletter"
 	"TailsOfOld/cfg"
+	"TailsOfOld/internal/newsletter"
 	"os"
 	"time"
 
