@@ -11,7 +11,7 @@ import (
 
 func Borked(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/error/500.html"
+	templatePath := "tailsofold/static/templates/error/500.html"
 	template := template.New("500.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)

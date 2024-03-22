@@ -26,7 +26,7 @@ func (a ArticleHandler) ServeHTTP(response http.ResponseWriter, request *http.Re
 	// Build template
 	articleTitle := chi.URLParam(request, "articleTitle")
 
-	templatePath := "TailsOfOld/static/templates/articles/article.html"
+	templatePath := "tailsofold/static/templates/articles/article.html"
 	template := template.New("article.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)

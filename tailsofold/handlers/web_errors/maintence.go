@@ -11,7 +11,7 @@ import (
 
 func Maintence(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/error/maintence.html"
+	templatePath := "tailsofold/static/templates/error/maintence.html"
 	template := template.New("maintence.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)

@@ -21,7 +21,7 @@ type SearchVars struct {
 
 func (s SearchHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/search/search.html"
+	templatePath := "tailsofold/static/templates/search/search.html"
 	template := template.New("search.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)
@@ -40,14 +40,14 @@ func (s SearchHandler) ServeHTTP(response http.ResponseWriter, request *http.Req
 		return
 	}
 
-	for _, article := range articles {
-		author, err := s.Database.GetAuthor(article.Author)
+	for index := range articles {
+		author, err := s.Database.GetAuthor(articles[index].Author)
 		if err != nil {
-			log.Error().Err(err).Str("article title", article.Title).Msg("failed to find author")
+			log.Error().Err(err).Str("article title", articles[index].Title).Msg("failed to find author")
 			weberrors.Borked(response, request)
 			return
 		}
-		article.Author = author.Name
+		articles[index].Author = author.Name
 	}
 
 	vars := SearchVars{

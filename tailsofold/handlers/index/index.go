@@ -23,7 +23,7 @@ type IndexHandler struct {
 
 func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/index/index.html"
+	templatePath := "tailsofold/static/templates/index/index.html"
 	template := template.New("index.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)
@@ -55,7 +55,7 @@ func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Requ
 		weberrors.Borked(response, request)
 		return
 	}
-	programmingAuthor, err := i.Database.GetAuthor(latestGamesArticle.Author)
+	programmingAuthor, err := i.Database.GetAuthor(latestProgrammingArticle.Author)
 	if err != nil {
 		log.Error().Err(err).Str("programming article title", latestProgrammingArticle.Title).Msg("failed to find programming author")
 		weberrors.Borked(response, request)

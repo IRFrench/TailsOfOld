@@ -2,11 +2,10 @@ package main
 
 import (
 	"TailsOfOld/cfg"
+	"TailsOfOld/internal/db"
 	"TailsOfOld/internal/newsletter"
 	"os"
 	"time"
-
-	"github.com/pocketbase/pocketbase"
 )
 
 func main() {
@@ -17,22 +16,12 @@ func main() {
 
 	mailClient := newsletter.NewMailClient(config)
 
-	database := makeDatabase(config)
-	go database.Start()
+	database := db.NewDatabase(config)
+	go database.Run()
 
 	time.Sleep(2 * time.Second)
 
 	if err := mailClient.SendNewsletter(database, time.Now().AddDate(0, -1, 0)); err != nil {
 		panic(err)
 	}
-}
-
-func makeDatabase(config cfg.Configuration) *pocketbase.PocketBase {
-	app := pocketbase.NewWithConfig(
-		pocketbase.Config{
-			DefaultDataDir: config.Database.DataDir,
-		},
-	)
-
-	return app
 }

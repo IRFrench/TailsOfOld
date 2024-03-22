@@ -10,7 +10,6 @@ const (
 	DB_USERS = "users"
 
 	USERNAME_COLUMN = "username"
-	EMAIL_COLUMN    = "email"
 	NAME_COLUMN     = "name"
 	AVATAR_COLUMN   = "avatar"
 )
@@ -36,7 +35,7 @@ func (d *DatabaseClient) GetAuthor(id string) (UserInfo, error) {
 func parseUser(user *models.Record) UserInfo {
 	return UserInfo{
 		Username:   user.GetString(USERNAME_COLUMN),
-		Email:      user.GetString(EMAIL_COLUMN),
+		Email:      user.Email(),
 		Name:       user.GetString(NAME_COLUMN),
 		AvatarPath: fmt.Sprintf("/pb_data/storage/%v/%v", user.BaseFilesPath(), user.GetString(AVATAR_COLUMN)),
 	}

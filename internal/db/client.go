@@ -22,5 +22,8 @@ func NewDatabase(config cfg.Configuration) *DatabaseClient {
 }
 
 func (d *DatabaseClient) Run() error {
-	return d.Db.Start()
+	if err := d.Db.Start(); err != nil {
+		return err
+	}
+	return nil
 }

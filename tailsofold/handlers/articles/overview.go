@@ -23,7 +23,7 @@ type OverviewVariables struct {
 
 func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/articles/overview.html"
+	templatePath := "tailsofold/static/templates/articles/overview.html"
 	template := template.New("overview.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)
@@ -41,15 +41,15 @@ func (o OverviewHandler) ServeHTTP(response http.ResponseWriter, request *http.R
 		return
 	}
 
-	for _, article := range databaseArticles {
+	for index := range databaseArticles {
 		// Update the author
-		articleAuthor, err := o.Database.GetAuthor(article.Author)
+		articleAuthor, err := o.Database.GetAuthor(databaseArticles[index].Author)
 		if err != nil {
-			log.Error().Err(err).Str("article title", article.Title).Msg("failed to find article author")
+			log.Error().Err(err).Str("article title", databaseArticles[index].Title).Msg("failed to find article author")
 			weberrors.Borked(response, request)
 			return
 		}
-		article.Author = articleAuthor.Name
+		databaseArticles[index].Author = articleAuthor.Name
 	}
 
 	vars := OverviewVariables{

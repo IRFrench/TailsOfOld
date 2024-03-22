@@ -13,7 +13,7 @@ tmp_dir = "tmp"
   exclude_unchanged = false
   follow_symlink = false
   full_bin = "ETC=config.yaml ./build/tailsOfOld"
-  include_dir = ["TailsOfOld", "cmd", "cfg"]
+  include_dir = ["tailsofold", "cmd", "cfg", "internal"]
   include_ext = ["go", "css", "js", "html", "yaml"]
   include_file = ["config.yaml"]
   kill_delay = "0s"

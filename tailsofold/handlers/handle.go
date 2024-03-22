@@ -1,5 +1,5 @@
 package handlers
 
 const (
-	BASE_TEMPLATES = "TailsOfOld/static/templates/base/*"
+	BASE_TEMPLATES = "tailsofold/static/templates/base/*"
 )

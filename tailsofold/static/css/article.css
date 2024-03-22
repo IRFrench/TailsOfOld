@@ -1,3 +1,12 @@
+.article a {
+    color: rgb(81, 136, 223);
+    text-decoration: underline;
+}
+
+.article a:hover {
+    color: rgb(143, 174, 224);
+}
+
 .article h1 {
     font-size: xx-large;
     font-weight: 700;
@@ -54,13 +63,4 @@
 
 .article blockquote p {
     display: inline;
-}
-
-a {
-    color: rgb(143, 174, 224);
-    text-decoration: underline;
-}
-
-a:hover {
-    color: rgb(81, 136, 223);
 }

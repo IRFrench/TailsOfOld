@@ -11,7 +11,7 @@ import (
 
 func NotFoundHandler(response http.ResponseWriter, request *http.Request) {
 	// Build template
-	templatePath := "TailsOfOld/static/templates/error/404.html"
+	templatePath := "tailsofold/static/templates/error/404.html"
 	template := template.New("404.html")
 
 	template, err := template.ParseFS(filesystem.FileSystem, handlers.BASE_TEMPLATES, templatePath)

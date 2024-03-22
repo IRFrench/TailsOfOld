@@ -107,6 +107,26 @@ func (d *DatabaseClient) GetFullArticle(title, section string) (ArticleInfo, err
 	return fullArticle, nil
 }
 
+func (d *DatabaseClient) GetArticlesCreatedSinceTime(since time.Time) ([]ArticleInfo, error) {
+	articles, err := d.Db.Dao().FindRecordsByFilter(
+		DB_ARTICLES,
+		fmt.Sprintf("created >= '%v' && %v = true", since.Format(time.DateTime), LIVE_COLUMN),
+		"-created",
+		0,
+		0,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	allArticles := make([]ArticleInfo, len(articles))
+	for index := range articles {
+		allArticles[index] = parseArticle(articles[index])
+	}
+
+	return allArticles, nil
+}
+
 func parseArticle(article *models.Record) ArticleInfo {
 	return ArticleInfo{
 		Title:       article.GetString(TITLE_COLUMN),
@@ -114,6 +134,7 @@ func parseArticle(article *models.Record) ArticleInfo {
 		Description: article.GetString(DESCRIPTION_COLUMN),
 		Created:     article.GetCreated().Time().Format(time.DateOnly),
 		Updated:     article.GetUpdated().Time().Format(time.DateOnly),
+		Author:      article.GetString(AUTHOR_COLUMN),
 		ImagePath:   fmt.Sprintf("/pb_data/storage/%v/%v", article.BaseFilesPath(), article.GetString(IMAGEPATH_COLUMN)),
 		ArticlePath: fmt.Sprintf("/%v/%v", article.GetString(SECTION_COLUMN), url.PathEscape(article.GetString(TITLE_COLUMN))),
 		New:         time.Now().Before(article.GetCreated().Time().AddDate(0, 1, 0)),
