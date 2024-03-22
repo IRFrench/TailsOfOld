@@ -5,6 +5,7 @@ import (
 	"TailsOfOld/internal/db"
 	"bytes"
 	"fmt"
+	"net/smtp"
 	"text/template"
 	"time"
 
@@ -68,9 +69,9 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 			return err
 		}
 
-		// if err := smtp.SendMail(m.host, m.auth, m.mailer, []string{recipient.Email}, buffer.Bytes()); err != nil {
-		// 	return err
-		// }
+		if err := smtp.SendMail(m.host, m.auth, m.mailer, []string{recipient.Email}, buffer.Bytes()); err != nil {
+			return err
+		}
 	}
 	return nil
 }
