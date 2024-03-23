@@ -37,9 +37,37 @@
     font-weight: 700;
 }
 
+.article pre {
+    background-color: #e5e5e5;
+    border-width: 2px;
+    border-color: #d4d4d4;
+    padding: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    overflow-x: scroll;
+}
+
+.dark .article pre {
+    background-color: #404040;
+    border-width: 2px;
+    border-color: #737373;
+    padding: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    overflow-x: scroll;
+}
+
 .article code {
-    background-color: rgb(212 212 212);
-    color: black;
+    background-color: #d4d4d4;
+    color: #8400ff;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    border-radius: 5px;
+}
+
+.dark .article code {
+    background-color: #404040;
+    color: #ffcc00;
     padding-left: .25rem;
     padding-right: .25rem;
     border-radius: 5px;
