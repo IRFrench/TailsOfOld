@@ -6,6 +6,7 @@ import (
 	"TailsOfOld/internal/db"
 	"TailsOfOld/tailsofold/routes/articles"
 	"TailsOfOld/tailsofold/routes/index"
+	"TailsOfOld/tailsofold/routes/newsletter"
 	"TailsOfOld/tailsofold/routes/search"
 	weberrors "TailsOfOld/tailsofold/routes/web_errors"
 	"context"
@@ -77,6 +78,7 @@ func CreateServer(config cfg.Configuration, database *db.DatabaseClient) (*WebSe
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
 	search.AddSearchRoutes(router, database)
+	newsletter.AddNewsletterRoutes(router, database)
 	weberrors.AddErrorRoutes(router)
 
 	// Add WebServer Deps 'ere
