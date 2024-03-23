@@ -4,6 +4,7 @@ import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/cfg"
 	"TailsOfOld/internal/db"
+	mailclient "TailsOfOld/internal/mail_client"
 	"TailsOfOld/tailsofold/routes/articles"
 	"TailsOfOld/tailsofold/routes/index"
 	"TailsOfOld/tailsofold/routes/newsletter"
@@ -36,7 +37,7 @@ func (s *WebServer) Shutdown() error {
 	return nil
 }
 
-func CreateServer(config cfg.Configuration, database *db.DatabaseClient) (*WebServer, error) {
+func CreateServer(config cfg.Configuration, database *db.DatabaseClient, mail *mailclient.MailClient) (*WebServer, error) {
 	router := chi.NewRouter()
 	newServer := &WebServer{
 		server: &http.Server{
@@ -78,7 +79,7 @@ func CreateServer(config cfg.Configuration, database *db.DatabaseClient) (*WebSe
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
 	search.AddSearchRoutes(router, database)
-	newsletter.AddNewsletterRoutes(router, database)
+	newsletter.AddNewsletterRoutes(router, database, mail)
 	weberrors.AddErrorRoutes(router)
 
 	// Add WebServer Deps 'ere

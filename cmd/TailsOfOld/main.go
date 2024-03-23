@@ -3,6 +3,7 @@ package main
 import (
 	"TailsOfOld/cfg"
 	"TailsOfOld/internal/db"
+	mailclient "TailsOfOld/internal/mail_client"
 	"TailsOfOld/tailsofold/server"
 	"os"
 	"os/signal"
@@ -35,8 +36,11 @@ func main() {
 	// Make the database
 	database := db.NewDatabase(config)
 
+	// Created the Mail client
+	mail := mailclient.NewMailClient(config)
+
 	// Create the server
-	server, err := server.CreateServer(config, database)
+	server, err := server.CreateServer(config, database, mail)
 	if err != nil {
 		log.Err(err).Msg("failed to create server")
 		return

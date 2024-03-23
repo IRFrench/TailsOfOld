@@ -3,7 +3,7 @@ package main
 import (
 	"TailsOfOld/cfg"
 	"TailsOfOld/internal/db"
-	"TailsOfOld/internal/newsletter"
+	mailclient "TailsOfOld/internal/mail_client"
 	"os"
 	"time"
 )
@@ -14,7 +14,7 @@ func main() {
 		panic(err)
 	}
 
-	mailClient := newsletter.NewMailClient(config)
+	mailClient := mailclient.NewMailClient(config)
 
 	database := db.NewDatabase(config)
 	go database.Run()

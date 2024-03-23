@@ -69,6 +69,9 @@ Content-Disposition: inline
             </div>
         </div>
         {{end}}
+        <div style="padding-left: 45%;">
+            <small><a href={{.UnsubscribePath}} style="text-decoration: underline; color: black;">unsubscribe</a></small>
+        </div>
     </div>
 </body>
 

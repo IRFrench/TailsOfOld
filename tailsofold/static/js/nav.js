@@ -21,5 +21,5 @@ if (localStorage.theme) {
 
 function mobileNav() {
     var mn = $("#mobile_nav");
-    mn.toggle()
+    mn.toggle();
 }

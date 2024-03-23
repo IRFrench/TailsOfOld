@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase/forms"
 	"github.com/pocketbase/pocketbase/models"
 )
@@ -46,6 +47,19 @@ func (d *DatabaseClient) GetVerifiedRecipients() ([]RecipientInfo, error) {
 	}
 
 	return allRecipients, nil
+}
+
+func (d *DatabaseClient) GetRecipientByNameAndEmail(name, email string) (RecipientInfo, error) {
+	recipient, err := d.Db.Dao().FindFirstRecordByFilter(
+		DB_RECIPIENTS,
+		fmt.Sprintf("%v = {:name} && %v = {:email}", FULL_NAME_COLUMN, EMAIL_COLUMN),
+		dbx.Params{"name": name, "email": strings.ToLower(email)},
+	)
+	if err != nil {
+		return RecipientInfo{}, err
+	}
+
+	return parseRecipient(recipient), nil
 }
 
 func (d *DatabaseClient) CreateRecipient(fullName, email string) error {

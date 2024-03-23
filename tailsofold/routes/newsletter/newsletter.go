@@ -2,14 +2,15 @@ package newsletter
 
 import (
 	"TailsOfOld/internal/db"
+	mailclient "TailsOfOld/internal/mail_client"
 	"TailsOfOld/tailsofold/handlers/newsletter"
 
 	"github.com/go-chi/chi/v5"
 )
 
-func AddNewsletterRoutes(router *chi.Mux, database *db.DatabaseClient) {
+func AddNewsletterRoutes(router *chi.Mux, database *db.DatabaseClient, mail *mailclient.MailClient) {
 	// Create newsletter subscribe handler and route
-	subscribeHandler := newsletter.SubscribeHandler{Database: database}
+	subscribeHandler := newsletter.SubscribeHandler{Database: database, Mail: mail}
 	router.Handle("/news/subscribe", subscribeHandler)
 
 	// Create newsletter verify handler and route

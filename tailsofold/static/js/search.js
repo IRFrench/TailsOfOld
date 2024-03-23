@@ -8,6 +8,6 @@ function searchRedirect(id) {
 
 $("#nav-search").on("keypress", function (event) {
     if (event.key === "Enter") {
-        searchRedirect("nav-search")
+        searchRedirect("nav-search");
     }
 });

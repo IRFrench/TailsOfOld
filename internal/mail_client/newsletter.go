@@ -1,4 +1,4 @@
-package newsletter
+package mailclient
 
 import (
 	filesystem "TailsOfOld"
@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"fmt"
 	"net/smtp"
+	"net/url"
 	"text/template"
 	"time"
 
@@ -13,9 +14,10 @@ import (
 )
 
 type newsletterArgs struct {
-	Articles  []db.ArticleInfo
-	Recipient db.RecipientInfo
-	Mailer    string
+	Articles        []db.ArticleInfo
+	Recipient       db.RecipientInfo
+	Mailer          string
+	UnsubscribePath string
 }
 
 func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time) error {
@@ -59,9 +61,10 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 		}
 
 		args := newsletterArgs{
-			Articles:  newArticles,
-			Recipient: recipient,
-			Mailer:    m.mailer,
+			Articles:        newArticles,
+			Recipient:       recipient,
+			Mailer:          m.mailer,
+			UnsubscribePath: fmt.Sprintf("www.tailsofold.com/news/unsubscribe?id=%v&email=%v", url.QueryEscape(recipient.Id), url.QueryEscape(recipient.Email)),
 		}
 
 		var buffer bytes.Buffer
@@ -72,6 +75,38 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 		if err := smtp.SendMail(m.host, m.auth, m.mailer, []string{recipient.Email}, buffer.Bytes()); err != nil {
 			return err
 		}
+	}
+	return nil
+}
+
+type VerifyArgs struct {
+	Recipient       db.RecipientInfo
+	Mailer          string
+	VerifyPath      string
+	UnsubscribePath string
+}
+
+func (m *MailClient) SendVerification(database *db.DatabaseClient, recipient db.RecipientInfo) error {
+	// Parse the template
+	newsletter, err := template.New("verify").Parse(filesystem.Verify)
+	if err != nil {
+		return err
+	}
+
+	args := VerifyArgs{
+		Recipient:       recipient,
+		Mailer:          m.mailer,
+		VerifyPath:      fmt.Sprintf("www.tailsofold.com/news/verify?id=%v&email=%v", url.QueryEscape(recipient.Id), url.QueryEscape(recipient.Email)),
+		UnsubscribePath: fmt.Sprintf("www.tailsofold.com/news/unsubscribe?id=%v&email=%v", url.QueryEscape(recipient.Id), url.QueryEscape(recipient.Email)),
+	}
+
+	var buffer bytes.Buffer
+	if err := newsletter.Execute(&buffer, args); err != nil {
+		return err
+	}
+
+	if err := smtp.SendMail(m.host, m.auth, m.mailer, []string{recipient.Email}, buffer.Bytes()); err != nil {
+		return err
 	}
 	return nil
 }

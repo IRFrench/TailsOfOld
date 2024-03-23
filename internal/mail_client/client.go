@@ -1,4 +1,4 @@
-package newsletter
+package mailclient
 
 import (
 	"TailsOfOld/cfg"
@@ -13,14 +13,14 @@ type MailClient struct {
 	template string
 }
 
-func NewMailClient(config cfg.Configuration) MailClient {
+func NewMailClient(config cfg.Configuration) *MailClient {
 	auth := smtp.PlainAuth(
 		"",
 		config.Mail.Username,
 		config.Mail.Password,
 		config.Mail.Host,
 	)
-	return MailClient{
+	return &MailClient{
 		auth:   auth,
 		host:   fmt.Sprintf("%v:587", config.Mail.Host),
 		mailer: config.Mail.Mailer,

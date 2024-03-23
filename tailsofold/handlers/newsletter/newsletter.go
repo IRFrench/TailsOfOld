@@ -3,10 +3,10 @@ package newsletter
 import (
 	filesystem "TailsOfOld"
 	"TailsOfOld/internal/db"
+	mailclient "TailsOfOld/internal/mail_client"
 	"TailsOfOld/tailsofold/handlers"
 	weberrors "TailsOfOld/tailsofold/handlers/web_errors"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"text/template"
 
@@ -19,6 +19,7 @@ const (
 
 type SubscribeHandler struct {
 	Database *db.DatabaseClient
+	Mail     *mailclient.MailClient
 }
 
 type SubscribeData struct {
@@ -29,17 +30,33 @@ type SubscribeData struct {
 func (s SubscribeHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	var data SubscribeData
 	if err := json.NewDecoder(request.Body).Decode(&data); err != nil {
+		log.Err(err).Msg("failed to decode subscribe body")
 		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
 		return
 	}
-	fmt.Println(data)
+	defer request.Body.Close()
 
 	if err := s.Database.CreateRecipient(data.FullName, data.Email); err != nil {
+		log.Err(err).Msg("failed to create recipient")
+		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
+		return
+	}
+
+	recipient, err := s.Database.GetRecipientByNameAndEmail(data.FullName, data.Email)
+	if err != nil {
+		log.Err(err).Msg("failed to find recipient")
+		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
+		return
+	}
+
+	if err := s.Mail.SendVerification(s.Database, recipient); err != nil {
+		log.Err(err).Msg("failed to send verification")
 		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
 		return
 	}
 
 	if err := json.NewEncoder(response).Encode(true); err != nil {
+		log.Err(err).Msg("failed to encode response")
 		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
 	}
 }
