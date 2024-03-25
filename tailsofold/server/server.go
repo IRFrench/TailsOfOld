@@ -69,17 +69,19 @@ func CreateServer(config cfg.Configuration, database *db.DatabaseClient, mail *m
 	databaseHandler := http.FileServer(http.Dir(config.Database.DataDir))
 	router.Handle("/pb_data/*", http.StripPrefix("/pb_data", databaseHandler))
 
-	// Add routes here
+	// Setup newsletter routes
+	newsletter.AddNewsletterRoutes(router, database, mail)
+
 	if config.Web.Maintence {
 		weberrors.AddMaintenceRoute(router)
 		return newServer, nil
 	}
 
+	// Add routes here
 	index.AddIndexRoutes(router, database)
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
 	search.AddSearchRoutes(router, database)
-	newsletter.AddNewsletterRoutes(router, database, mail)
 	weberrors.AddErrorRoutes(router)
 
 	// Add WebServer Deps 'ere

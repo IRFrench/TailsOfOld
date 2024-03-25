@@ -21,9 +21,8 @@ func NewDatabase(config cfg.Configuration) *DatabaseClient {
 	}
 }
 
-func (d *DatabaseClient) Run() error {
+func (d *DatabaseClient) Run(errorChannel chan<- error) {
 	if err := d.Db.Start(); err != nil {
-		return err
+		errorChannel <- err
 	}
-	return nil
 }

@@ -41,7 +41,7 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 
 	// If there are no new articles
 	if len(newArticles) < 1 {
-		log.Info().Msg("no new articles found this month")
+		log.Debug().Msg("no new articles found this month")
 		return nil
 	}
 
@@ -54,9 +54,12 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 
 	// Send email
 	for _, recipient := range recipients {
+		log.Debug().Str("email", recipient.Email).Msg("building newsletter")
+
 		// Parse the template
 		newsletter, err := template.New("newsletter").Parse(filesystem.Newsletter)
 		if err != nil {
+			log.Err(err).Msg("failed to parse template")
 			return err
 		}
 
@@ -69,12 +72,15 @@ func (m *MailClient) SendNewsletter(database *db.DatabaseClient, since time.Time
 
 		var buffer bytes.Buffer
 		if err := newsletter.Execute(&buffer, args); err != nil {
+			log.Err(err).Msg("failed to execute template")
 			return err
 		}
 
 		if err := smtp.SendMail(m.host, m.auth, m.mailer, []string{recipient.Email}, buffer.Bytes()); err != nil {
+			log.Err(err).Msg("failed to send newsletter")
 			return err
 		}
+		log.Debug().Str("email", recipient.Email).Msg("newsletter sent")
 	}
 	return nil
 }

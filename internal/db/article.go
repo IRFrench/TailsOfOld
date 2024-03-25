@@ -94,7 +94,7 @@ func (d *DatabaseClient) SearchArticlesByTitle(title string) ([]ArticleInfo, err
 func (d *DatabaseClient) GetFullArticle(title, section string) (ArticleInfo, error) {
 	article, err := d.Db.Dao().FindFirstRecordByFilter(
 		DB_ARTICLES,
-		fmt.Sprintf("%v = {:title} && %v = '%v'", TITLE_COLUMN, SECTION_COLUMN, section),
+		fmt.Sprintf("%v = {:title} && %v = '%v' && %v = true", TITLE_COLUMN, SECTION_COLUMN, section, LIVE_COLUMN),
 		dbx.Params{"title": title},
 	)
 	if err != nil {

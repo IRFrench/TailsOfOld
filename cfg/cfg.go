@@ -17,6 +17,7 @@ type Configuration struct {
 	Web      Web      `yaml:"web"`
 	Database Database `yaml:"database"`
 	Mail     Mail     `yaml:"mail"`
+	BulkMail Mail     `yaml:"bulk_mail"`
 }
 
 type Web struct {
@@ -48,10 +49,25 @@ func LoadConfig(filePath string) (Configuration, error) {
 	}
 
 	log.Info().
-		Str("web address", configuration.Web.Address).
-		Bool("maintence", configuration.Web.Maintence).
-		Str("database dir", configuration.Database.DataDir).
-		Msg("configuration loaded")
+		Str("address", configuration.Web.Address).
+		Bool("maintence mode", configuration.Web.Maintence).
+		Msg("web configuration")
+
+	log.Info().
+		Str("directory", configuration.Database.DataDir).
+		Msg("database configuration")
+
+	log.Info().
+		Str("username", configuration.Mail.Username).
+		Str("host", configuration.Mail.Host).
+		Str("mailer", configuration.Mail.Mailer).
+		Msg("mail configuration")
+
+	log.Info().
+		Str("username", configuration.BulkMail.Username).
+		Str("host", configuration.BulkMail.Host).
+		Str("mailer", configuration.BulkMail.Mailer).
+		Msg("bulk mail configuration")
 
 	return configuration, nil
 }

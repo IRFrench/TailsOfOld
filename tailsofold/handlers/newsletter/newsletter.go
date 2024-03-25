@@ -49,11 +49,14 @@ func (s SubscribeHandler) ServeHTTP(response http.ResponseWriter, request *http.
 		return
 	}
 
-	if err := s.Mail.SendVerification(s.Database, recipient); err != nil {
-		log.Err(err).Msg("failed to send verification")
-		http.Error(response, ErrSomethingWentWrong, http.StatusInternalServerError)
-		return
-	}
+	go func() {
+		log.Info().Str("email", recipient.Email).Msg("sending verification email")
+		if err := s.Mail.SendVerification(s.Database, recipient); err != nil {
+			log.Err(err).Msg("failed to send verification")
+			return
+		}
+		log.Info().Msg("verification sent")
+	}()
 
 	if err := json.NewEncoder(response).Encode(true); err != nil {
 		log.Err(err).Msg("failed to encode response")

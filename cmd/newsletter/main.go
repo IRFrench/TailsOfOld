@@ -17,7 +17,7 @@ func main() {
 	mailClient := mailclient.NewMailClient(config)
 
 	database := db.NewDatabase(config)
-	go database.Run()
+	go database.Run(make(chan<- error))
 
 	time.Sleep(2 * time.Second)
 
