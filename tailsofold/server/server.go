@@ -70,7 +70,7 @@ func CreateServer(config cfg.Configuration, database *db.DatabaseClient, mail *m
 	router.Handle("/pb_data/*", http.StripPrefix("/pb_data", databaseHandler))
 
 	// Setup newsletter routes
-	newsletter.AddNewsletterRoutes(router, database, mail)
+	newsletter.AddNewsletterRoutes(router, database, mail, config.Web.Newsletter)
 
 	if config.Web.Maintence {
 		weberrors.AddMaintenceRoute(router)

@@ -14,9 +14,9 @@ func main() {
 		panic(err)
 	}
 
-	mailClient := mailclient.NewMailClient(config)
+	mailClient := mailclient.NewMailClient(config.Mail)
 
-	database := db.NewDatabase(config)
+	database := db.NewDatabase(config.Database)
 	go database.Run(make(chan<- error))
 
 	time.Sleep(2 * time.Second)

@@ -13,16 +13,16 @@ type MailClient struct {
 	template string
 }
 
-func NewMailClient(config cfg.Configuration) *MailClient {
+func NewMailClient(config cfg.Mail) *MailClient {
 	auth := smtp.PlainAuth(
 		"",
-		config.Mail.Username,
-		config.Mail.Password,
-		config.Mail.Host,
+		config.Username,
+		config.Password,
+		config.Host,
 	)
 	return &MailClient{
 		auth:   auth,
-		host:   fmt.Sprintf("%v:587", config.Mail.Host),
-		mailer: config.Mail.Mailer,
+		host:   fmt.Sprintf("%v:587", config.Host),
+		mailer: config.Mailer,
 	}
 }

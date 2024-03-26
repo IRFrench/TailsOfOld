@@ -10,10 +10,10 @@ type DatabaseClient struct {
 	Db *pocketbase.PocketBase
 }
 
-func NewDatabase(config cfg.Configuration) *DatabaseClient {
+func NewDatabase(config cfg.Database) *DatabaseClient {
 	app := pocketbase.NewWithConfig(
 		pocketbase.Config{
-			DefaultDataDir: config.Database.DataDir,
+			DefaultDataDir: config.DataDir,
 		},
 	)
 	return &DatabaseClient{

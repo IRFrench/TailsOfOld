@@ -12,15 +12,13 @@ function subscribed() {
     $("#news_full_name").hide();
     $("#news_email").hide();
     $("#form_note").show();
-    console.log("subscribed");
 }
 
-function failedToSubscribe() {
+function failedToSubscribe(data) {
     $("#news_full_name").hide();
     $("#news_email").hide();
-    $("#form_note").text("Sorry, something went wrong");
+    $("#form_note").text(data.responseText);
     $("#form_note").show();
-    console.log("failed to subscribe");
 }
 
 function Subscribe() {

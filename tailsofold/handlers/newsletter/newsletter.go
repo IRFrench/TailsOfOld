@@ -14,12 +14,14 @@ import (
 )
 
 const (
-	ErrSomethingWentWrong = "something went wrong"
+	ErrSomethingWentWrong         = "something went wrong"
+	ErrNewslettersAreNotAvailable = "sorry, the newsletter is currently offline :/"
 )
 
 type SubscribeHandler struct {
-	Database *db.DatabaseClient
-	Mail     *mailclient.MailClient
+	Database   *db.DatabaseClient
+	Mail       *mailclient.MailClient
+	Newsletter bool
 }
 
 type SubscribeData struct {
@@ -28,6 +30,11 @@ type SubscribeData struct {
 }
 
 func (s SubscribeHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
+	if !s.Newsletter {
+		http.Error(response, ErrNewslettersAreNotAvailable, http.StatusServiceUnavailable)
+		return
+	}
+
 	var data SubscribeData
 	if err := json.NewDecoder(request.Body).Decode(&data); err != nil {
 		log.Err(err).Msg("failed to decode subscribe body")

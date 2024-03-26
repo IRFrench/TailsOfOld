@@ -21,8 +21,9 @@ type Configuration struct {
 }
 
 type Web struct {
-	Address   string `yaml:"address"`
-	Maintence bool   `yaml:"maintence"`
+	Address    string `yaml:"address"`
+	Maintence  bool   `yaml:"maintence"`
+	Newsletter bool   `yaml:"newsletter"`
 }
 
 type Database struct {
@@ -51,6 +52,7 @@ func LoadConfig(filePath string) (Configuration, error) {
 	log.Info().
 		Str("address", configuration.Web.Address).
 		Bool("maintence mode", configuration.Web.Maintence).
+		Bool("newsletter", configuration.Web.Newsletter).
 		Msg("web configuration")
 
 	log.Info().

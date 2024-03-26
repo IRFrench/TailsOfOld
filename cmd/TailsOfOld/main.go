@@ -36,11 +36,16 @@ func main() {
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
 	// Make the database
-	database := db.NewDatabase(config)
+	database := db.NewDatabase(config.Database)
 
-	// Created the Mail client
-	mail := mailclient.NewMailClient(config)
-	go monthlyNewsletter(mail, database)
+	// Create the mail client
+	mail := mailclient.NewMailClient(config.Mail)
+
+	// Create the newsletter sender
+	if config.Web.Newsletter {
+		bulkMail := mailclient.NewMailClient(config.BulkMail)
+		go monthlyNewsletter(bulkMail, database)
+	}
 
 	// Create the server
 	server, err := server.CreateServer(config, database, mail)
@@ -75,7 +80,7 @@ func main() {
 }
 
 func monthlyNewsletter(mail *mailclient.MailClient, database *db.DatabaseClient) {
-	ticker := time.NewTicker(24 * 60 * time.Minute)
+	ticker := time.NewTicker(24 * time.Hour)
 	for {
 		<-ticker.C
 		currentTime := time.Now()

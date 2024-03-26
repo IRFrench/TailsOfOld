@@ -6,65 +6,496 @@ Mime-Version: 1.0
 Content-Disposition: inline
 
 <!DOCTYPE html>
-<html
-    style="line-height: 1.5;tab-size: 4;font-family: Roboto, sans-serif;font-feature-settings: normal;font-variation-settings: normal;">
-
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
+  <meta charset="utf-8">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <style>
+    /* Your custom CSS resets for email */
+/*
+ * Here is where you can add your global email CSS resets.
+ *
+ * We use a custom, email-specific CSS reset, instead
+ * of Tailwind's web-optimized `base` layer.
+ *
+ * Styles defined here will be inlined.
+*/
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    line-height: 1
+}
+/* Tailwind CSS components */
+/**
+ * @import here any custom CSS components - that is, CSS that
+ * you'd want loaded before the Tailwind utilities, so the
+ * utilities can still override them.
+*/
+/* Tailwind CSS utility classes */
+.absolute {
+    position: absolute
+}
+.relative {
+    position: relative
+}
+.bottom-0 {
+    bottom: 0
+}
+.left-0 {
+    left: 0
+}
+.right-0 {
+    right: 0
+}
+.top-0 {
+    top: 0
+}
+.m-0 {
+    margin: 0
+}
+.my-12 {
+    margin-top: 48px;
+    margin-bottom: 48px
+}
+.mb-1 {
+    margin-bottom: 4px
+}
+.mb-3 {
+    margin-bottom: 12px
+}
+.mb-32 {
+    margin-bottom: 128px
+}
+.mb-4 {
+    margin-bottom: 16px
+}
+.mb-6 {
+    margin-bottom: 24px
+}
+.ml-auto {
+    margin-left: auto
+}
+.mr-auto {
+    margin-right: auto
+}
+.inline-block {
+    display: inline-block
+}
+.flex {
+    display: flex
+}
+.table {
+    display: table
+}
+.hidden {
+    display: none
+}
+.h-32 {
+    height: 128px
+}
+.h-8 {
+    height: 32px
+}
+.h-full {
+    height: 100%
+}
+.min-h-screen {
+    min-height: 100vw
+}
+.w-1\/2 {
+    width: 50%
+}
+.w-12 {
+    width: 48px
+}
+.w-32 {
+    width: 128px
+}
+.w-8 {
+    width: 32px
+}
+.w-\[552px\] {
+    width: 552px
+}
+.w-\[600px\] {
+    width: 600px
+}
+.w-full {
+    width: 100%
+}
+.w-screen {
+    width: 100vw
+}
+.max-w-full {
+    max-width: 100%
+}
+.shrink-0 {
+    flex-shrink: 0
+}
+.grow-0 {
+    flex-grow: 0
+}
+.basis-auto {
+    flex-basis: auto
+}
+.cursor-default {
+    cursor: default
+}
+.flex-wrap {
+    flex-wrap: wrap
+}
+.items-center {
+    align-items: center
+}
+.justify-center {
+    justify-content: center
+}
+.gap-x-2 {
+    column-gap: 8px
+}
+.overflow-hidden {
+    overflow: hidden
+}
+.rounded {
+    border-radius: 4px
+}
+.rounded-lg {
+    border-radius: 8px
+}
+.bg-\[hsla\(0\2c 0\%\2c 98\.4\%\2c \.15\)\] {
+    background-color: hsla(0,0%,98.4%,.15)
+}
+.bg-indigo-700 {
+    background-color: #4338ca
+}
+.bg-neutral-100 {
+    background-color: #f5f5f5
+}
+.bg-slate-200 {
+    background-color: #e2e8f0
+}
+.bg-slate-300 {
+    background-color: #cbd5e1
+}
+.bg-slate-50 {
+    background-color: #f8fafc
+}
+.bg-white {
+    background-color: #fff
+}
+.bg-cover {
+    background-size: cover
+}
+.bg-fixed {
+    background-attachment: fixed
+}
+.bg-top {
+    background-position: top
+}
+.bg-no-repeat {
+    background-repeat: no-repeat
+}
+.p-0 {
+    padding: 0
+}
+.p-12 {
+    padding: 48px
+}
+.p-6 {
+    padding: 24px
+}
+.px-12 {
+    padding-left: 48px;
+    padding-right: 48px
+}
+.px-28 {
+    padding-left: 112px;
+    padding-right: 112px
+}
+.px-3 {
+    padding-left: 12px;
+    padding-right: 12px
+}
+.px-6 {
+    padding-left: 24px;
+    padding-right: 24px
+}
+.py-16 {
+    padding-top: 64px;
+    padding-bottom: 64px
+}
+.py-4 {
+    padding-top: 16px;
+    padding-bottom: 16px
+}
+.pb-8 {
+    padding-bottom: 32px
+}
+.pl-4 {
+    padding-left: 16px
+}
+.pr-4 {
+    padding-right: 16px
+}
+.text-left {
+    text-align: left
+}
+.text-center {
+    text-align: center
+}
+.text-right {
+    text-align: right
+}
+.align-top {
+    vertical-align: top
+}
+.font-sans {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif
+}
+.text-2xl {
+    font-size: 24px
+}
+.text-4xl {
+    font-size: 36px
+}
+.text-5xl {
+    font-size: 48px
+}
+.text-base {
+    font-size: 16px
+}
+.text-lg {
+    font-size: 18px
+}
+.text-sm {
+    font-size: 14px
+}
+.text-xl {
+    font-size: 20px
+}
+.text-xs {
+    font-size: 12px
+}
+.font-bold {
+    font-weight: 700
+}
+.font-semibold {
+    font-weight: 600
+}
+.uppercase {
+    text-transform: uppercase
+}
+.italic {
+    font-style: italic
+}
+.leading-12 {
+    line-height: 48px
+}
+.leading-16 {
+    line-height: 64px
+}
+.leading-6 {
+    line-height: 24px
+}
+.leading-8 {
+    line-height: 32px
+}
+.leading-none {
+    line-height: 1
+}
+.tracking-tight {
+    letter-spacing: -0.025em
+}
+.text-black {
+    color: #000
+}
+.text-indigo-700 {
+    color: #4338ca
+}
+.text-neutral-500 {
+    color: #737373
+}
+.text-purple-600 {
+    color: #9333ea
+}
+.text-slate-50 {
+    color: #f8fafc
+}
+.text-slate-500 {
+    color: #64748b
+}
+.text-slate-600 {
+    color: #475569
+}
+.text-slate-700 {
+    color: #334155
+}
+.text-white {
+    color: #fff
+}
+.opacity-0 {
+    opacity: 0
+}
+.transition {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms
+}
+.duration-300 {
+    transition-duration: 300ms
+}
+.ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+.mso-font-width-\[150\%\] {
+    mso-font-width: 150%
+}
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)
+}
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
+}
+.\[-webkit-font-smoothing\:antialiased\] {
+    -webkit-font-smoothing: antialiased
+}
+.\[text-decoration\:none\] {
+    text-decoration: none
+}
+.\[word-break\:break-word\] {
+    word-break: break-word
+}
+/* Your custom utility classes */
+/*
+ * Here is where you can define your custom utility classes.
+ *
+ * We wrap them in the `utilities` @layer directive, so
+ * that Tailwind moves them to the correct location.
+ *
+ * More info:
+ * https://tailwindcss.com/docs/functions-and-directives#layer
+*/
+.hover\:text-indigo-500:hover {
+    color: #6366f1 !important
+}
+.hover\:opacity-100:hover {
+    opacity: 1 !important
+}
+.hover\:\!\[text-decoration\:underline\]:hover {
+    text-decoration: underline !important
+}
+@media (max-width: 600px) {
+    .sm\:my-8 {
+        margin-top: 32px !important;
+        margin-bottom: 32px !important
+    }
+    .sm\:inline-block {
+        display: inline-block !important
+    }
+    .sm\:w-6 {
+        width: 24px !important
+    }
+    .sm\:w-full {
+        width: 100% !important
+    }
+    .sm\:px-0 {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+    }
+    .sm\:px-4 {
+        padding-left: 16px !important;
+        padding-right: 16px !important
+    }
+    .sm\:px-6 {
+        padding-left: 24px !important;
+        padding-right: 24px !important
+    }
+    .sm\:py-8 {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important
+    }
+    .sm\:pb-8 {
+        padding-bottom: 32px !important
+    }
+    .sm\:text-3xl {
+        font-size: 30px !important
+    }
+    .sm\:leading-10 {
+        line-height: 40px !important
+    }
+    .sm\:leading-8 {
+        line-height: 32px !important
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .dark\:bg-neutral-600 {
+        background-color: #525252 !important
+    }
+    .dark\:bg-neutral-700 {
+        background-color: #404040 !important
+    }
+    .dark\:text-neutral-300 {
+        color: #d4d4d4 !important
+    }
+    .dark\:text-white {
+        color: #fff !important
+    }
+    .dark\:text-yellow-500 {
+        color: #eab308 !important
+    }
+}
 
-<body style="margin: 0;line-height: inherit;">
-    <div style="min-height: 100%;background-color: rgb(245 245 245 / 1);">
-        <section style="padding-top: 4rem;padding-bottom: 4rem;text-align: center;">
-            <div style="display: flex;justify-content: center;">
-                <div style="max-width: 800px;">
-                    <h2 style="margin-bottom: 3rem;font-size: 3rem;
-                    line-height: 1;font-weight: 700;letter-spacing: -0.025em;">
-                        New articles are
-                        <span style="color: rgb(147 51 234 / 1);">Available</span>
-                    </h2>
-                    <p style="font-size: 1.125rem;line-height: 1.75rem;color: rgb(115 115 115 / 1);">
-                        Come check them out!
+  </style>
+  
+</head>
+<body class="m-0 p-0 [word-break:break-word] [-webkit-font-smoothing:antialiased] " style="font-family: Roboto, sans-serif; width: 100vw;">
+    
+    <div class="min-h-screen px-28 bg-neutral-100 dark:bg-neutral-700">
+        <section class="py-16 bg-white dark:bg-neutral-600 text-center md:text-left shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-full">
+            <h2 class="mb-4 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl dark:text-white">
+                New articles are available on<br>
+                <span class="text-purple-600 dark:text-yellow-500">Tails of Old</span>
+            </h2>
+            <p class="text-lg text-neutral-500 dark:text-neutral-300">
+                Come check out some of the latest articles!
+            </p>
+            {{range .Articles}}
+            <div role="separator" style="line-height: 60px">&zwj;</div>
+            <div class="mb-6 flex flex-wrap">
+                <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
+                    <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init="" data-te-ripple-color="light">
+                        <img src="{{.ImagePath}}" class="w-screen" style="max-width: 80vw;">
+                        <a href="{{.ArticlePath}}">
+                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
+                    <h5 class="mb-3 text-lg font-bold dark:text-white"><a href="{{.ArticlePath}}">{{.Title}}</a></h5>
+                    <div class="mb-3 flex gap-x-2 font-bold items-center justify-center text-sm text-purple-600 dark:text-yellow-500 md:justify-start">
+                        <img src="www.tailsofold.com/static/img/{{.Section}}.png" class="h-8 w-8" alt="">
+                        {{.Section}}
+                    </div>
+                    <p class="mb-6 text-neutral-500 dark:text-neutral-300">
+                        <small>Published <u>{{.Created}}</u> by
+                            {{.Author}}</small>
                     </p>
                 </div>
             </div>
+            {{end}}
         </section>
-        <div id="articles" style="margin-bottom: 1.5rem;"></div>
-        {{range .Articles}}
-        <div style="display: flex;margin-bottom: 1.5rem;flex-wrap: wrap;">
-            <div
-                style="margin-bottom: 1.5rem;flex-shrink: 0;flex-grow: 0;flex-basis: auto;padding-left: 0.75rem;padding-right: 0.75rem;">
-                <div
-                    style="margin-bottom: 1.5rem;position: relative;overflow: hidden;border-radius: 0.5rem;background-size: cover;background-repeat: no-repeat;box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);">
-                    <img src="{{.ImagePath}}" alt="Image"
-                        style="display: block;vertical-align: middle;max-width: 60vw;height: auto;width: 30rem;" />
-                    <a href="{{.ArticlePath}}">
-                        <div
-                            style="width: 100%;overflow: hidden;position: absolute;top: 0px;right: 0px;bottom: 0px;left: 0px;height: 100%;background-attachment: fixed;opacity: 0;">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div
-                style="margin-bottom: 1.5rem;flex-shrink: 0;flex-grow: 0;flex-basis: auto;padding-left: 0.75rem;padding-right: 0.75rem;margin-right: auto;">
-                <a href="{{.ArticlePath}}"><h5 style="font-weight: 700;font-size: 1.125rem;line-height: 1.75rem;margin-bottom: 0.75rem;margin-top: 0;">{{.Title}}</h5></a>
-                <div
-                    style="display: flex;font-weight: 700;color: rgb(147 51 234 / 1);column-gap: 0.5rem;align-items: center;font-size: 0.875rem;line-height: 1.25rem;margin-bottom: 0.75rem;">
-                    <img src="www.tailsofold.com/static/img/{{.Section}}.png" style="width: 2rem; height: 2rem;">
-                    {{.Section}}
-                </div>
-                <p style="color: rgb(115 115 115 / 1);margin-bottom: 1.5rem;">
-                    <small>Published <u>{{.Created}}</u> by
-                        {{.Author}}</small>
-                </p>
-            </div>
-        </div>
-        {{end}}
-        <div style="padding-left: 45%;">
-            <small><a href={{.UnsubscribePath}} style="text-decoration: underline; color: black;">unsubscribe</a></small>
-        </div>
     </div>
-</body>
 
+    <div role="separator" style="line-height: 200px">&zwj;</div>
+    <div style="padding-left: 36%;">
+        <small><a href={{.UnsubscribePath}} style="text-decoration: underline; color: black;">unsubscribe</a></small>
+    </div>
+
+</body>
 </html>

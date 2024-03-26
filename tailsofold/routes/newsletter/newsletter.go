@@ -8,11 +8,14 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func AddNewsletterRoutes(router *chi.Mux, database *db.DatabaseClient, mail *mailclient.MailClient) {
+func AddNewsletterRoutes(router *chi.Mux, database *db.DatabaseClient, mail *mailclient.MailClient, newsletterFlag bool) {
 	// Create newsletter subscribe handler and route
-	subscribeHandler := newsletter.SubscribeHandler{Database: database, Mail: mail}
+	subscribeHandler := newsletter.SubscribeHandler{Database: database, Mail: mail, Newsletter: newsletterFlag}
 	router.Handle("/news/subscribe", subscribeHandler)
 
+	if !newsletterFlag {
+		return
+	}
 	// Create newsletter verify handler and route
 	verifyHandler := newsletter.VerifyHandler{Database: database}
 	router.Handle("/news/verify", verifyHandler)
