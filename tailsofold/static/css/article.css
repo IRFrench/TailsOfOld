@@ -1,10 +1,19 @@
 .article a {
-    color: rgb(81, 136, 223);
+    color: #8400ff;
     text-decoration: underline;
 }
 
 .article a:hover {
-    color: rgb(143, 174, 224);
+    color: #ab52ff;
+}
+
+.dark .article a {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+.dark .article a:hover {
+    color: #a58400;
 }
 
 .article h1 {
@@ -12,6 +21,11 @@
     margin-bottom: 1rem;
     font-size: xx-large;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h1 {
+    color: #ffcc00;
 }
 
 .article h2 {
@@ -19,6 +33,11 @@
     margin-bottom: 1rem;
     font-size: x-large;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h2 {
+    color: #ffcc00;
 }
 
 .article h3 {
@@ -26,6 +45,11 @@
     margin-bottom: 1rem;
     font-size: large;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h3 {
+    color: #ffcc00;
 }
 
 .article h4 {
@@ -33,6 +57,11 @@
     margin-bottom: 1rem;
     font-size: medium;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h4 {
+    color: #ffcc00;
 }
 
 .article h5 {
@@ -40,6 +69,11 @@
     margin-bottom: 1rem;
     font-size: smaller;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h5 {
+    color: #ffcc00;
 }
 
 .article h6 {
@@ -47,6 +81,11 @@
     margin-bottom: 1rem;
     font-size: small;
     font-weight: 700;
+    color: #8400ff;
+}
+
+.dark .article h6 {
+    color: #ffcc00;
 }
 
 .article pre {

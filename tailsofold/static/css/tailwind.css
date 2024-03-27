@@ -1822,6 +1822,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
+:is(.dark .dark\:bg-neutral-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(115 115 115 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:bg-neutral-600) {
   --tw-bg-opacity: 1;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity));
