@@ -21,6 +21,7 @@ func NotFoundHandler(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
+	response.WriteHeader(http.StatusNotFound)
 	if err := template.ExecuteTemplate(response, "base", nil); err != nil {
 		log.Error().Err(err).Msg("failed to execute the template")
 		Borked(response, request)
