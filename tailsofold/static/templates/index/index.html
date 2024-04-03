@@ -1,4 +1,5 @@
 {{define "head"}}
+<script src="/static/js/newsletter.js" defer></script>
 {{end}}
 {{define "content"}}
 <div class="min-h-screen bg-neutral-100 dark:bg-slate-800">
@@ -219,6 +220,76 @@
                 </div>
             </div>
         </div>
+    </section>
+    <hr
+        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
+
+    <section class="background-radial-gradient flex items-center">
+        <style>
+            .background-radial-gradient {
+                background-color: hsl(295, 60%, 15%);
+                background-image: radial-gradient(650px circle at 0% 0%,
+                        hsl(295, 60%, 39%) 15%,
+                        hsl(295, 60%, 30%) 35%,
+                        hsl(295, 60%, 20%) 75%,
+                        hsl(295, 60%, 19%) 80%,
+                        transparent 100%),
+                    radial-gradient(1250px circle at 100% 100%,
+                        hsl(295, 60%, 35%) 15%,
+                        hsl(295, 60%, 30%) 35%,
+                        hsl(295, 60%, 20%) 75%,
+                        hsl(295, 60%, 19%) 80%,
+                        transparent 100%);
+            }
+        </style>
+
+        <form id="newsletter" class="flex items-center w-full" style="min-height: 20rem;">
+            <div class="px-6 py-12 text-center md:px-12 lg:text-left w-full">
+                <div class="container mx-auto">
+                    <div class="flex flex-wrap justify-center">
+                        <div class="w-max shrink-0 grow-0 basis-auto px-3">
+                            <div class="grid items-center gap-x-4 lg:grid-cols-2">
+                                <div class="mb-10 lg:mb-0">
+                                    <h2 class="text-3xl font-bold text-white">
+                                        Do not miss any updates.
+                                        <br />
+                                        <span class="text-[hsl(295,60%,62%)]">Subscribe to the newsletter</span>
+                                    </h2>
+                                </div>
+
+                                <div class="mb-6 flex-row md:mb-0 md:flex items-center lg:justify-self-end">
+                                    <div class="relative mb-3 w-full md:mr-3 md:mb-0 xl:w-96 flex flex-col"
+                                        data-te-input-wrapper-init>
+                                        <div class="relative" data-twe-input-wrapper-init>
+                                            <input type="name"
+                                                class="relative mb-2 block w-full flex-auto rounded border border-solid border-neutral-400 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-white font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none"
+                                                placeholder="Full name" aria-label="Full name"
+                                                aria-describedby="button-addon2" id="news_full_name" />
+                                        </div>
+
+                                        <div class="relative" data-twe-input-wrapper-init>
+                                            <input type="email"
+                                                class="relative mb-2 block w-full flex-auto rounded border border-solid border-neutral-400 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-white font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none"
+                                                placeholder="Email" aria-label="Full name"
+                                                aria-describedby="button-addon2" id="news_email" />
+                                        </div>
+
+                                        <div id="form_note" class="relative grow shrink-0 text-white text-lg" hidden>
+                                            Verification requested!
+                                        </div>
+                                        <button type="submit" id="news_submit"
+                                            class="inline-block rounded bg-primary px-7 pt-1.5 pb-1 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                            data-te-ripple-init data-te-ripple-color="light">
+                                            Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </section>
 </div>
 {{end}}
