@@ -78,7 +78,7 @@ func CreateServer(config cfg.Configuration, database *db.DatabaseClient, mail *m
 	}
 
 	// Add routes here
-	index.AddIndexRoutes(router, database)
+	index.AddIndexRoutes(router, database, config.Web.Newsletter)
 	articles.AddArticleOverviewRoutes(router, database)
 	articles.AddArticleRoutes(router, database)
 	search.AddSearchRoutes(router, database)
