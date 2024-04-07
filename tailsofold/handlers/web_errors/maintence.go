@@ -20,7 +20,6 @@ func Maintence(response http.ResponseWriter, request *http.Request) {
 		panic(err)
 	}
 
-	response.WriteHeader(http.StatusNoContent)
 	if err := template.ExecuteTemplate(response, "base", nil); err != nil {
 		log.Error().Err(err).Msg("failed to execute the template")
 		panic(err)
