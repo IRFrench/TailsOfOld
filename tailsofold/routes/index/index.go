@@ -7,8 +7,8 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func AddIndexRoutes(router *chi.Mux, database *db.DatabaseClient, newsletterSignup bool) {
+func AddIndexRoutes(router *chi.Mux, database *db.DatabaseClient) {
 	// Create index handler and route
-	indexHandler := index.IndexHandler{Database: database, Newsletter: newsletterSignup}
+	indexHandler := index.IndexHandler{Database: database}
 	router.Handle("/", indexHandler)
 }

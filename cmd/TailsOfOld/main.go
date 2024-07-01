@@ -3,12 +3,10 @@ package main
 import (
 	"TailsOfOld/cfg"
 	"TailsOfOld/internal/db"
-	mailclient "TailsOfOld/internal/mail_client"
 	"TailsOfOld/tailsofold/server"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -38,17 +36,8 @@ func main() {
 	// Make the database
 	database := db.NewDatabase(config.Database)
 
-	// Create the mail client
-	mail := mailclient.NewMailClient(config.Mail)
-
-	// Create the newsletter sender
-	if config.Web.Newsletter {
-		bulkMail := mailclient.NewMailClient(config.BulkMail)
-		go monthlyNewsletter(bulkMail, database)
-	}
-
 	// Create the server
-	server, err := server.CreateServer(config, database, mail)
+	server, err := server.CreateServer(config, database)
 	if err != nil {
 		log.Err(err).Msg("failed to create server")
 		return
@@ -76,22 +65,5 @@ func main() {
 			}
 			return
 		}
-	}
-}
-
-func monthlyNewsletter(mail *mailclient.MailClient, database *db.DatabaseClient) {
-	ticker := time.NewTicker(24 * time.Hour)
-	for {
-		<-ticker.C
-		currentTime := time.Now()
-		_, _, day := currentTime.Date()
-		if day != 7 {
-			continue
-		}
-		log.Info().Msg("sending newsletter")
-		if err := mail.SendNewsletter(database, currentTime.AddDate(0, -1, 0)); err != nil {
-			log.Err(err).Msg("failed to send newsletter")
-		}
-		log.Info().Msg("newsletter sent")
 	}
 }

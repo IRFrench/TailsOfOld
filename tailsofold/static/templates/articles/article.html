@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="/static/css/article.css">
 {{end}}
 {{define "content"}}
-<div class="min-h-screen px-28 bg-neutral-100 dark:bg-neutral-700">
-    <div class="dark:bg-neutral-600 bg-white shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-max">
+<div class="min-h-screen bg-neutral-100 dark:bg-neutral-700 flex justify-center">
+    <div class="dark:bg-neutral-600 bg-white shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-max lg:w-3/5">
         <section class="px-6 py-4 2xl:px-64 2xl:py-32">
             <img src="{{.Article.ImagePath}}" class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20 object-cover"
                 alt="image" style="max-height: 50vh;" />

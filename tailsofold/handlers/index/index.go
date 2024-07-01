@@ -15,12 +15,10 @@ type IndexVariables struct {
 	LatestGame        db.ArticleInfo
 	LatestProgramming db.ArticleInfo
 	LatestTale        db.ArticleInfo
-	Newsletter        bool
 }
 
 type IndexHandler struct {
-	Database   *db.DatabaseClient
-	Newsletter bool
+	Database *db.DatabaseClient
 }
 
 func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
@@ -84,7 +82,6 @@ func (i IndexHandler) ServeHTTP(response http.ResponseWriter, request *http.Requ
 		LatestProgramming: latestProgrammingArticle,
 		LatestGame:        latestGamesArticle,
 		LatestTale:        latestTalesArticle,
-		Newsletter:        i.Newsletter,
 	} //define an instance with required field
 
 	if err := template.ExecuteTemplate(response, "base", vars); err != nil {

@@ -16,25 +16,15 @@ var (
 type Configuration struct {
 	Web      Web      `yaml:"web"`
 	Database Database `yaml:"database"`
-	Mail     Mail     `yaml:"mail"`
-	BulkMail Mail     `yaml:"bulk_mail"`
 }
 
 type Web struct {
-	Address    string `yaml:"address"`
-	Maintence  bool   `yaml:"maintence"`
-	Newsletter bool   `yaml:"newsletter"`
+	Address   string `yaml:"address"`
+	Maintence bool   `yaml:"maintence"`
 }
 
 type Database struct {
 	DataDir string `yaml:"data_dir"`
-}
-
-type Mail struct {
-	Username string `yaml:"username"`
-	Password string `yaml:"password"`
-	Host     string `yaml:"host"`
-	Mailer   string `yaml:"mailer"`
 }
 
 func LoadConfig(filePath string) (Configuration, error) {
@@ -52,24 +42,11 @@ func LoadConfig(filePath string) (Configuration, error) {
 	log.Info().
 		Str("address", configuration.Web.Address).
 		Bool("maintence mode", configuration.Web.Maintence).
-		Bool("newsletter", configuration.Web.Newsletter).
 		Msg("web configuration")
 
 	log.Info().
 		Str("directory", configuration.Database.DataDir).
 		Msg("database configuration")
-
-	log.Info().
-		Str("username", configuration.Mail.Username).
-		Str("host", configuration.Mail.Host).
-		Str("mailer", configuration.Mail.Mailer).
-		Msg("mail configuration")
-
-	log.Info().
-		Str("username", configuration.BulkMail.Username).
-		Str("host", configuration.BulkMail.Host).
-		Str("mailer", configuration.BulkMail.Mailer).
-		Msg("bulk mail configuration")
 
 	return configuration, nil
 }
