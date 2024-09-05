@@ -26,7 +26,7 @@ RUN CGO_ENABLED=0 go build -o ./build/tailsofold ./cmd/TailsOfOld/main.go
 # Create the container
 FROM alpine:3.20.2
 
-RUN apk update; apk add wget
+RUN apk update; apk add wget curl
 
 COPY --from=binary /opt/build/tailsofold /usr/bin/tailsofold
 
@@ -34,4 +34,4 @@ WORKDIR /etc
 
 VOLUME /etc
 
-CMD ["tailsofold", "serve"]
+CMD ["tailsofold", "serve", "--http=0.0.0.0:8090"]
