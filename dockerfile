@@ -24,7 +24,7 @@ COPY --from=tailwindcss /opt/tailsofold/static/css/tailwind.css /opt/tailsofold/
 RUN CGO_ENABLED=0 go build -o ./build/tailsofold ./cmd/TailsOfOld/main.go
 
 # Create the container
-FROM scratch
+FROM alpine:3.20.2
 
 COPY --from=binary /opt/build/tailsofold /usr/bin/tailsofold
 
