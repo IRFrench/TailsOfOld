@@ -32,6 +32,4 @@ WORKDIR /etc
 
 VOLUME /etc
 
-ENV ETC=config.yaml
-
 CMD ["tailsofold", "serve"]
