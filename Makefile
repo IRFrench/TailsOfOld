@@ -19,13 +19,13 @@ docker.build: ## Build the docker container
 	docker build -f dockerfile -t tailsofold .
 
 docker.run: ## Run the docker container
-	@docker container rm tailsofold
 	docker run \
+	-e ETC=/etc/config.yaml \
 	-v ./config.yaml:/etc/config.yaml \
 	-v ./database:/etc/database \
 	-p 127.0.0.1:9000:9000 \
 	-p 127.0.0.1:8090:8090 \
-	--name tailsofold tailsofold
+	tailsofold
 
 # Help command #
 
