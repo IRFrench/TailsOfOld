@@ -12,7 +12,7 @@ tmp_dir = "tmp"
   exclude_regex = ["_test.go"]
   exclude_unchanged = false
   follow_symlink = false
-  full_bin = "ETC=config.yaml ./build/tailsOfOld"
+  full_bin = "WEB=0.0.0.0:9000 DB=./database/pb_data ./build/tailsOfOld"
   include_dir = ["tailsofold", "cmd", "cfg", "internal"]
   include_ext = ["go", "css", "js", "html", "yaml", "txt"]
   include_file = ["config.yaml"]

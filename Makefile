@@ -8,10 +8,9 @@ server.build: ## Building the dependencies
 	CGO_ENABLED=0 go build -o ./build/tailsOfOld ./cmd/TailsOfOld/main.go
 
 server.run: ## Run prod server
-	ETC=config.yaml ./build/tailsOfOld serve
-
-mail.test: ## Send a test email
-	CGO_ENABLED=0 ETC=config.yaml go run cmd/newsletter/main.go serve
+	WEB=0.0.0.0:9000 \
+	DB=./database/pb_data \
+	./build/tailsOfOld serve --http=0.0.0.0:8090
 
 # Docker section #
 
@@ -20,7 +19,8 @@ docker.build: ## Build the docker container
 
 docker.run: ## Run the docker container
 	docker run \
-	-e ETC=/etc/config.yaml \
+	-e WEB=0.0.0.0:9000 \
+	-e DB=./database/pb_data \
 	-v ./config.yaml:/etc/config.yaml \
 	-v ./database:/etc/database \
 	-p 127.0.0.1:9000:9000 \

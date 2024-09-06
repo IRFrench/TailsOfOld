@@ -2,10 +2,17 @@ package cfg
 
 import (
 	"errors"
+	"fmt"
 	"os"
 
 	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v3"
+)
+
+const (
+	dbEnvironment          = "DB"
+	webEnvironment         = "WEB"
+	maintenanceEnvironment = "MAINTENANCE"
 )
 
 var (
@@ -27,7 +34,7 @@ type Database struct {
 	DataDir string `yaml:"data_dir"`
 }
 
-func LoadConfig(filePath string) (Configuration, error) {
+func LoadConfigFromFile(filePath string) (Configuration, error) {
 	configFile, err := os.ReadFile(filePath)
 	if err != nil {
 		return Configuration{}, ErrFailedToReadConfigFile
@@ -49,4 +56,23 @@ func LoadConfig(filePath string) (Configuration, error) {
 		Msg("database configuration")
 
 	return configuration, nil
+}
+
+func LoadConfigFromEnvironment() (Configuration, error) {
+	newConfig := Configuration{}
+	var ok bool
+
+	newConfig.Web.Address, ok = os.LookupEnv(webEnvironment)
+	if !ok {
+		return Configuration{}, fmt.Errorf("missing environment: %v", webEnvironment)
+	}
+
+	newConfig.Database.DataDir, ok = os.LookupEnv(dbEnvironment)
+	if !ok {
+		return Configuration{}, fmt.Errorf("missing environment: %v", dbEnvironment)
+	}
+
+	_, newConfig.Web.Maintence = os.LookupEnv(maintenanceEnvironment)
+
+	return newConfig, nil
 }

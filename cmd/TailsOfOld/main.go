@@ -20,7 +20,7 @@ func main() {
 	log.Info().Msg("building server")
 
 	// Read configuration
-	config, err := cfg.LoadConfig(os.Getenv("ETC"))
+	config, err := cfg.LoadConfigFromEnvironment()
 	if err != nil {
 		log.Err(err).Msg("failed to read configuration")
 		return
