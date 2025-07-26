@@ -4,6 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="/static/css/tailwind.css">
+    <link rel="stylesheet" href="/static/css/animation.css">
     <script src="/static/js/jquery-3.7.1.min.js"></script>
     <script src="/static/js/nav.js" defer></script>
     <script src="/static/js/search.js" defer></script>
@@ -11,9 +12,13 @@
     {{template "head"}}
 </head>
 
-<body>
+<body class="overflow-x-hidden">
     {{template "nav"}}
     {{template "content" .}}
+    <!-- Husky -->
+    <div class="walkway">
+        <img class="dog" src="/static/img/husky_walk.gif">
+    </div>
     {{template "foot"}}
 </body>
 

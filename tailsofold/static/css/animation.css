@@ -1,0 +1,25 @@
+.dog {
+    animation-duration: 45s;
+    animation-name: walk;
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.walkway {
+    position: relative;
+    height: 0;
+    width: 100%;
+}
+
+@keyframes walk {
+    0% {
+        left: -10%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
