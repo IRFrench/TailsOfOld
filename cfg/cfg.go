@@ -62,6 +62,10 @@ func LoadConfigFromEnvironment() (Configuration, error) {
 	newConfig := Configuration{}
 	var ok bool
 
+	if configfile, ok := os.LookupEnv("ETC"); ok {
+		return LoadConfigFromFile(configfile)
+	}
+
 	newConfig.Web.Address, ok = os.LookupEnv(webEnvironment)
 	if !ok {
 		return Configuration{}, fmt.Errorf("missing environment: %v", webEnvironment)
