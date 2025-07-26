@@ -22,6 +22,10 @@ type UserInfo struct {
 }
 
 func (d *DatabaseClient) GetAuthor(id string) (UserInfo, error) {
+	if id == "" {
+		return UserInfo{}, nil
+	}
+
 	articleAuthor, err := d.Db.Dao().FindRecordById(
 		DB_USERS,
 		id,

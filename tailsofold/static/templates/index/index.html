@@ -3,6 +3,7 @@
 {{end}}
 {{define "content"}}
 <div class="min-h-screen bg-neutral-100 dark:bg-slate-800">
+    {{if .LatestProgramming.Title}}
     <!-- Section: Programming Box -->
     <section class="background-program-gradient">
         <style>
@@ -32,10 +33,9 @@
                             Is your computer <br /><span class="text-[hsl(218,81%,75%)]">borked?</span>
                         </h1>
                         <p class="text-lg text-[hsl(218,81%,95%)]">
-                            Good news! They all are in some way.<br>The programming pages go through all of the new
-                            experiences that I have found while working on new
-                            projects. If you are interested in my experiences with new technologies, this section may be
-                            for you.<br>Check it out <a href="/programming"
+                            Same.
+                            <br>
+                            <br>Check it out <a href="/programming"
                                 class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
                                 here!
                             </a>
@@ -76,6 +76,8 @@
     </section>
     <hr
         class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
+    {{end}}
+    {{if .LatestGame.Title}}
     <!-- Section: Gaming Box -->
     <section class="background-game-gradient">
         <style>
@@ -134,8 +136,7 @@
                             But can it run <br /><span class="text-[hsl(54,89%,56%)]">Doom?</span>
                         </h1>
                         <p class="text-lg text-[hsl(218,81%,95%)]">
-                            If it can't, you need a new one. The game pages are about the games I have experienced and
-                            enjoyed, with reviews and ratings for entertainment purposes.
+                            Games are great fun, so I've written about some.
                             <br>Check it out <a href="/games"
                                 class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
                                 here!
@@ -148,6 +149,8 @@
     </section>
     <hr
         class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
+    {{end}}
+    {{if .LatestTale.Title}}
     <!-- Section: Stories Box -->
     <section class="background-story-gradient">
         <style>
@@ -177,11 +180,7 @@
                             Ready for a <br /><span class="text-[hsl(150,42%,62%)]">story?</span>
                         </h1>
                         <p class="text-lg text-[hsl(218,81%,95%)]">
-                            I have never been good at creative writing. I struggle to describe the imagery in my mind in
-                            words, so I often don't. The story pages are my works of creative writing to help me improve
-                            my writing skills. Hopefully, I will be able to make some... err... <i>*checks
-                                thesaurus*</i> some
-                            <b>titillating</b> stories.
+                            I'm not good a creative writing. I hope these are enjoyable :)
                             <br>Check it out <a href="/tales"
                                 class="text-primary transition duration-150 ease-in-out text-primary-400 hover:text-primary-500 focus:text-primary-500 active:text-primary-600">
                                 here!
@@ -221,5 +220,6 @@
             </div>
         </div>
     </section>
+    {{end}}
 </div>
 {{end}}

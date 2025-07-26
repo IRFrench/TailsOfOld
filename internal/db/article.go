@@ -50,6 +50,10 @@ func (d *DatabaseClient) GetLatestSectionArticleInfo(section string) (ArticleInf
 		return ArticleInfo{}, err
 	}
 
+	if len(latestSectionArticle) < 1 {
+		return ArticleInfo{}, nil
+	}
+
 	return parseArticle(latestSectionArticle[0]), nil
 }
 
