@@ -1,103 +1,24 @@
 {{define "nav"}}
-<div class="bg-white dark:bg-neutral-600">
-    <nav
-        class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:py-4 bg-transparent">
-        <div class="flex w-full flex-wrap items-center justify-between px-3">
-            <button
-                class="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
-                type="button" data-twe-collapse-init data-twe-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"
-                onclick="mobileNav()">
-                <!-- Hamburger icon -->
-                <span class="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </button>
-
-            <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-                id="navbarSupportedContent1" data-twe-collapse-item>
-                <!-- Logo -->
-                <a class="mb-4 me-5 ms-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-                    href="/">
-                    <img src="/static/img/logo.png" style="height: 50px" alt="TE Logo" loading="lazy" />
-                </a>
-                <ul class="list-style-none me-auto flex flex-col ps-0 lg:flex-row" data-twe-navbar-nav-ref>
-                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="/programming" data-twe-nav-link-ref>Programming</a>
-                    </li>
-                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="/games" data-twe-nav-link-ref>Games</a>
-                    </li>
-                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                            href="/tales" data-twe-nav-link-ref>Tales</a>
-                    </li>
-                    <!-- Darkmode -->
-                    <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-                        <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2 cursor-pointer"
-                            onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ml-5 flex w-[30%] items-center justify-between">
-                <input type="search"
-                    class="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none motion-reduce:transition-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-                    placeholder="Search" aria-label="Search" aria-describedby="button-addon2" id="nav-search" />
-
-                <!--Search icon-->
-                <a class="cursor-pointer" onclick="searchRedirect('nav-search')">
-                    <span
-                        class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
-                        id="basic-addon2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                            <path fill-rule="evenodd"
-                                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                clip-rule="evenodd" />
-                        </svg>
-                </a>
-                </span>
-            </div>
+<div>
+    <nav>
+        <!-- Logo -->
+        <a href="/">
+            <img src="/static/img/logo.png" style="height: 50px" alt="TE Logo" loading="lazy" />
+        </a>
+        <a class="nav-button" href="/programming">Programming</a>
+        <a class="nav-button" href="/games">Games</a>
+        <a class="nav-button" href="/tales">Tales</a>
+        <a class="nav-button clickable" onclick="toggleTheme()">Theme</a>
+        <div class="nav-button nav-search">
+            <a class="cursor-pointer" onclick="searchRedirect('nav-search')">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                        clip-rule="evenodd" />
+                </svg>
+            </a>
+            <input type="search" id="nav-search-input" />
         </div>
     </nav>
-    <hr
-        class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
-</div>
-
-<div id="mobile_nav"
-    class="bg-white z-50 dark:bg-neutral-600 w-96 h-full fixed border-e-2 border-purple-600 dark:border-yellow-400 p-0 m-0"
-    hidden>
-    <ul class="list-style-none me-auto flex flex-col ps-0" data-twe-navbar-nav-ref>
-        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                href="/" data-twe-nav-link-ref>Home</a>
-        </li>
-        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
-        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                href="/programming" data-twe-nav-link-ref>Programming</a>
-        </li>
-        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
-        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                href="/games" data-twe-nav-link-ref>Games</a>
-        </li>
-        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
-        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                href="/tales" data-twe-nav-link-ref>Tales</a>
-        </li>
-        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
-        <li class="my-4 mx-2 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-            <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2 cursor-pointer"
-                onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
-        </li>
-        <hr class="h-0.5 border-t-0 bg-neutral-300 dark:bg-neutral-100 dark:bg-white/10" />
-    </ul>
 </div>
 {{end}}

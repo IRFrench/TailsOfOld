@@ -1,0 +1,63 @@
+.background-program-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+}
+
+.background-game-gradient {
+    background-color: hsl(43, 100%, 15%);
+    background-image: radial-gradient(650px circle at 0% 100%,
+            hsl(43, 100%, 35%) 15%,
+            hsl(43, 100%, 30%) 35%,
+            hsl(43, 100%, 20%) 75%,
+            hsl(43, 100%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 0%,
+            hsl(43, 100%, 35%) 15%,
+            hsl(43, 100%, 30%) 35%,
+            hsl(43, 100%, 20%) 75%,
+            hsl(43, 100%, 19%) 80%,
+            transparent 100%);
+}
+
+.background-story-gradient {
+    background-color: hsl(152, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(152, 41%, 35%) 15%,
+            hsl(152, 41%, 30%) 35%,
+            hsl(152, 41%, 20%) 75%,
+            hsl(152, 41%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(152, 41%, 35%) 15%,
+            hsl(152, 41%, 30%) 35%,
+            hsl(152, 41%, 20%) 75%,
+            hsl(152, 41%, 19%) 80%,
+            transparent 100%);
+}
+
+:root {
+    --purple-5: #0D0916;
+    --purple-4: #3E2858;
+    --purple-3: #7C4A96;
+    --purple-2: #B484BD;
+    --purple-1: #DDC5DD;
+
+    --white-3: #B3B3B3;
+    --white-2: #D9D9D9;
+    --white-1: #FFFFFF;
+
+    --black-3: #000000;
+    --black-2: #262626;
+    --black-1: #4D4D4D;
+}

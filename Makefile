@@ -4,7 +4,6 @@ server.run-dev: ## Run dev server
 	air serve
 
 server.build: ## Building the dependencies
-	npx tailwindcss -i ./tailsofold/static/css/main.css -o ./tailsofold/static/css/tailwind.css
 	CGO_ENABLED=0 go build -o ./build/tailsOfOld ./cmd/TailsOfOld/main.go
 
 server.run: ## Run prod server
