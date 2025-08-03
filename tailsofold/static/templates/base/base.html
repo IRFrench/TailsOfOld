@@ -13,13 +13,17 @@
     {{template "head"}}
 </head>
 
-<body class="overflow-x-hidden">
+<body>
     {{template "nav"}}
-    {{template "content" .}}
+    <div class="divider"></div>
+    <div class="content-container">
+        {{template "content" .}}
+    </div>
     <!-- Husky -->
     <div class="walkway">
         <img class="dog" src="/static/img/husky_walk.gif">
     </div>
+    <div class="divider"></div>
     {{template "foot"}}
 </body>
 
