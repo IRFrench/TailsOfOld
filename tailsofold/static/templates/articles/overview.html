@@ -1,75 +1,32 @@
 {{define "head"}}
+<link rel="stylesheet" href="/static/css/card.css">
+<link rel="stylesheet" href="/static/css/overview.css">
 {{end}}
 {{define "content"}}
-<div class="min-h-screen bg-neutral-100 dark:bg-neutral-700">
-    <section class="py-16 text-center">
-        <div class="flex justify-center">
-            <div class="max-w-[800px]">
-                <h2 class="mb-4 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl dark:text-white">
-                    Welcome to the <br />
-                    <span class="text-purple-600 dark:text-yellow-500">{{.Section}} Section</span>
-                </h2>
-                <div class="flex justify-center">
-                    <img src="/static/img/{{.Section}}.png" class="w-32 h-32">
+<div class="overview-page">
+    <h2>
+        Programming section
+    </h2>
+    <img src="/static/img/{{.Section}}.png" class="overview-img">
+    <div class="overview-articles">
+        {{range .Articles}}
+        <a class="article" href="{{.ArticlePath}}">
+            <img class="article-img" src="{{.ImagePath}}">
+            <div class="article-text">
+                <h3>{{.Title}}</h3>
+                <div class="section">
+                    <img class="section-img" src="/static/img/{{.Section}}.png">
+                    <p class="section-text">{{.Section}}</p>
                 </div>
-                <p class="text-lg text-neutral-500 dark:text-neutral-300">
-                    Come check out some of the latest articles!
-                </p>
-                <div class="mt-4 flex justify-center">
-                    <a href="#articles">
-                        <svg class="w-8 h-8 fill-neutral-500 dark:fill-neutral-300" viewBox="0 0 448 512"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z">
-                            </path>
-                        </svg>
-                    </a>
+                <small>
+                    Published <u>{{.Created}}</u> by {{.Author}}
+                </small>
+                <div class="description">
+                    {{.Description}}
                 </div>
             </div>
-        </div>
-    </section>
-    <div class="mb-6" id="articles"></div>
-    <section class="pb-32 px-16 2xl:px-32 text-center">
-        <div class="grid gap-6 lg:grid-cols-3 xl:gap-x-12">
-            {{range .Articles}}
-            <div class="mb-6 lg:mb-0">
-                <div
-                    class="relative block rounded-lg bg-white shadow-lg dark:shadow-md shadow-purple-600 dark:shadow-yellow-400 dark:bg-neutral-600">
-                    <div class="flex justify-center">
-                        <div class="relative mx-4 -mt-4 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
-                            data-te-ripple-init data-te-ripple-color="light">
-                            <img src="{{.ImagePath}}" class="w-full" />
-                            <a href="{{.ArticlePath}}">
-                                <div
-                                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-center mb-3 gap-2">
-                            <h5 class="text-lg font-bold dark:text-white">{{.Title}}
-                            </h5>
-                            {{if .New}}
-                            <span
-                                class="inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700 dark:bg-slate-900 dark:text-primary-500">New</span>
-                            {{end}}
-                        </div>
-                        <p class="mb-4 text-neutral-500 dark:text-neutral-300">
-                            <small>Published <u>{{.Created}}</u> by {{.Author}}</small>
-                        </p>
-                        <p class="mb-4 pb-2 dark:text-white">
-                            {{.Description}}
-                        </p>
-                        <a href="{{.ArticlePath}}" data-te-ripple-init data-te-ripple-color="light"
-                            class="inline-block rounded-full bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">Read
-                            more</a>
-                    </div>
-                </div>
-            </div>
-            {{end}}
-        </div>
-    </section>
+        </a>
+        {{end}}
+    </div>
 </div>
 {{end}}

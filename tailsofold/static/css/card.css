@@ -1,0 +1,56 @@
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.article {
+    border-radius: 10px;
+    background-color: var(--primary);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    box-shadow: 0 4px 8px 0 var(--purple-shadow), 0 6px 20px 0 var(--purple-shadow);
+}
+
+.article-img {
+    border-radius: 10px;
+    filter: contrast(1);
+    width: 20vw;
+    max-height: 15rem;
+    object-fit: contain;
+}
+
+.article-text {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.section-img {
+    height: 1.5rem;
+}
+
+.section-text {
+    color: var(--tertiary);
+}
+
+small {
+    color: var(--foreground-light);
+}
+
+.description {
+    color: var(--foreground-light);
+}
+
+.article-link {
+    width: 100%;
+    height: 100%;
+}

@@ -1,4 +1,4 @@
-.front-page {
+.search-page {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -7,8 +7,14 @@
     align-items: center;
 }
 
-.latest-articles {
+.search-results {
     display: flex;
     flex-direction: column;
     width: 90vw;
+}
+
+.no-articles {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

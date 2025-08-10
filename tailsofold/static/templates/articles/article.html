@@ -3,33 +3,25 @@
 <link rel="stylesheet" href="/static/css/article.css">
 {{end}}
 {{define "content"}}
-<div class="min-h-screen bg-neutral-100 dark:bg-neutral-700 flex justify-center">
-    <div class="dark:bg-neutral-600 bg-white shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-max lg:w-3/5 mb-4">
-        <section class="px-6 py-4 2xl:px-64 2xl:py-32">
-            <img src="{{.Article.ImagePath}}" class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20 object-cover"
-                alt="image" style="max-height: 50vh;" />
-
-            <div class="flex mb-4">
-                <img src="{{.Author.AvatarPath}}" class="mr-2 h-8 w-8 rounded-full" alt="avatar" loading="lazy" />
-                <div class="grid grid-cols-2 w-full text-neutral-600 dark:text-neutral-300 items-center">
-                    <span class="justify-self-start"> Published <u>{{.Article.Created}}</u> by {{.Author.Name}}</span>
-                    <span class="justify-self-end"> Updated On <u>{{.Article.Updated}}</u></span>
-                </div>
-            </div>
-            <div class="mb-6 text-neutral-600 dark:text-neutral-300 text-sm">
-                <i id="read-time"></i>
-            </div>
-
-            <div class="text-black dark:text-white">
-                <h1 class="mb-8 text-3xl font-bold">
-                    {{.Article.Title}}
-                </h1>
-                <hr class="my-4 h-0.5 border-t-0 bg-neutral-200 dark:bg-neutral-500" />
-                <div id="article" class="article">
-                    {{.Article.Article}}
-                </div>
-            </div>
-        </section>
+<div class="article-page">
+    <div class="reader">
+        <img class="article-img" src="{{.Article.ImagePath}}">
+        <div class="metadata">
+            <img src="{{.Author.AvatarPath}}" class="author-img">
+            <small>
+                Published <u>{{.Article.Created}}</u> by {{.Author.Name}}
+            </small>
+            <small class="updated-tag">
+                Updated <u>{{.Article.Updated}}</u>
+            </small>
+        </div>
+        <small>
+            <i class="read-time" id="read-time"></i>
+        </small>
+        <h1 class="article-title">{{.Article.Title}}</h1>
+        <div class="article" id="article">
+            {{.Article.Article}}
+        </div>
     </div>
 </div>
 {{end}}

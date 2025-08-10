@@ -47,25 +47,31 @@
 }
 
 :root {
-    --purple-5: #0D0916;
-    --purple-4: #3E2858;
-    --purple-3: #7C4A96;
-    --purple-2: #B484BD;
-    --purple-1: #DDC5DD;
+    --purple-5: rgb(13, 9, 22);
+    --purple-4: rgb(62, 40, 88);
+    --purple-3: rgb(124, 74, 150);
+    --purple-2: rgb(180, 132, 189);
+    --purple-1: rgb(221, 197, 221);
+    --purple-shadow: rgba(124, 74, 150, 0.5);
 
-    --white-3: #B3B3B3;
-    --white-2: #D9D9D9;
-    --white-1-5: #f7f7f7;
-    --white-1: #FFFFFF;
+    --white-3: rgb(179, 179, 179);
+    --white-2: rgb(217, 217, 217);
+    --white-1-5: rgb(247, 247, 247);
+    --white-1: rgb(255, 255, 255);
+    --white-shadow: rgb(255, 255, 255, 0.5);
 
-    --black-3: #000000;
-    --black-2-5: #080808;
-    --black-2: #262626;
-    --black-1: #4D4D4D;
+    --black-3: rgb(0, 0, 0);
+    --black-2-5: rgb(8, 8, 8);
+    --black-2: rgb(38, 38, 38);
+    --black-1: rgb(77, 77, 77);
+    --black-shadow: rgb(0, 0, 0, 0.5);
 
     --foreground: var(--black-3);
-    --foreground-hover: var(--black-1);
+    --foreground-light: var(--black-1);
+    --foreground-hover: var(--purple-3);
     --primary: var(--white-1);
+    --primary-dark: var(--white-2);
     --secondary: var(--white-1-5);
     --tertiary: var(--purple-3);
+    --tertiary-hover: var(--purple-2);
 }

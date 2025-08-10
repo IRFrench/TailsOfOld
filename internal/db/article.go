@@ -12,9 +12,7 @@ import (
 const (
 	DB_ARTICLES = "articles"
 
-	GAME_SECTION        = "games"
 	PROGRAMMING_SECTION = "programming"
-	TALES_SECTION       = "tales"
 
 	TITLE_COLUMN       = "title"
 	DESCRIPTION_COLUMN = "description"
@@ -38,23 +36,28 @@ type ArticleInfo struct {
 	New         bool
 }
 
-func (d *DatabaseClient) GetLatestSectionArticleInfo(section string) (ArticleInfo, error) {
-	latestSectionArticle, err := d.Db.Dao().FindRecordsByFilter(
+func (d *DatabaseClient) GetLatestArticlesInfo() ([]ArticleInfo, error) {
+	latestArticles, err := d.Db.Dao().FindRecordsByFilter(
 		DB_ARTICLES,
-		fmt.Sprintf("%v = '%v' && %v = true", SECTION_COLUMN, section, LIVE_COLUMN),
+		fmt.Sprintf("%v = true", LIVE_COLUMN),
 		"-created",
-		1,
+		10,
 		0,
 	)
 	if err != nil {
-		return ArticleInfo{}, err
+		return nil, err
 	}
 
-	if len(latestSectionArticle) < 1 {
-		return ArticleInfo{}, nil
+	if len(latestArticles) < 1 {
+		return nil, nil
 	}
 
-	return parseArticle(latestSectionArticle[0]), nil
+	articleList := make([]ArticleInfo, 10)
+	for index := range latestArticles {
+		articleList[index] = parseArticle(latestArticles[index])
+	}
+
+	return articleList[:len(latestArticles)], nil
 }
 
 func (d *DatabaseClient) GetEntireSectionArticleInfo(section string) ([]ArticleInfo, error) {

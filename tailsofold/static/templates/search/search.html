@@ -1,49 +1,35 @@
 {{define "head"}}
+<link rel="stylesheet" href="/static/css/search.css">
+<link rel="stylesheet" href="/static/css/card.css">
 {{end}}
 {{define "content"}}
-<div class="min-h-screen px-28 bg-neutral-100 dark:bg-neutral-700">
-    <section
-        class="py-16 bg-white dark:bg-neutral-600 text-center md:text-left shadow-lg shadow-purple-600 dark:shadow-yellow-400 h-full">
-        <h2 class="pb-12 text-center text-3xl font-bold dark:text-white">Search</h2>
+<div class="search-page">
+    <h2>
+        Search:
+    </h2>
+    <div class="search-results">
         {{range .Articles}}
-        <div class="mb-6 flex flex-wrap">
-            <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
-                <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
-                    data-te-ripple-init data-te-ripple-color="light">
-                    <img src="{{.ImagePath}}" class="w-full" alt="Louvre" />
-                    <a href="{{.ArticlePath}}">
-                        <div
-                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
-                        </div>
-                    </a>
+        <a class="article" href="{{.ArticlePath}}">
+            <img class="article-img" src="{{.ImagePath}}">
+            <div class="article-text">
+                <h3>{{.Title}}</h3>
+                <div class="section">
+                    <img class="section-img" src="/static/img/{{.Section}}.png">
+                    <p class="section-text">{{.Section}}</p>
                 </div>
-            </div>
-
-            <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
-                <h5 class="mb-3 text-lg font-bold dark:text-white">{{.Title}}</h5>
-                <div
-                    class="mb-3 flex gap-x-2 font-bold items-center justify-center text-sm text-purple-600 dark:text-yellow-500 md:justify-start">
-                    <img src="/static/img/{{.Section}}.png" class="h-8 w-8">
-                    {{.Section}}
-                </div>
-                <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                    <small>Published <u>{{.Created}}</u> by
-                        {{.Author}}</small>
-                </p>
-                <p class="text-neutral-500 dark:text-neutral-300">
+                <small>
+                    Published <u>{{.Created}}</u> by {{.Author}}
+                </small>
+                <div class="description">
                     {{.Description}}
-                </p>
+                </div>
             </div>
-        </div>
+        </a>
         {{else}}
-        <section class="pb-32 text-center">
-            <div class="px-6 py-12 md:px-12">
-                <h2 class="py-12 text-xl font-bold tracking-tight dark:text-white">
-                    Sorry, there doesn't seem to be any articles with that name :( <br>
-                </h2>
-            </div>
-        </section>
+        <div class="no-articles">
+            <p>Sorry, there doesn't seem to be any articles for that</p>
+        </div>
         {{end}}
-    </section>
+    </div>
 </div>
 {{end}}

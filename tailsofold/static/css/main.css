@@ -3,19 +3,57 @@
     src: url("/static/fonts/Jersey-15.ttf") format("truetype");
 }
 
-body {
-    font-size: 1.5rem;
+a {
+    padding: 0;
     margin: 0;
-    font-family: "Jersey-15";
+    text-decoration: 0;
     color: var(--foreground);
+}
+
+.main-title {
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+    color: var(--tertiary);
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+    color: var(--tertiary);
+}
+
+h5 {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    color: var(--foreground);
+}
+
+code {
+    font-family: "Jersey-15";
+    font-size: 1.2rem;
 }
 
 nav {
     padding: .5rem;
+    margin-left: 2rem;
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     background-color: var(--primary);
 }
 
@@ -34,8 +72,8 @@ nav {
 .nav-search-input {
     height: 2rem;
     width: 20rem;
-    font-family: "Jersey-15";
-    font-size: 1.2rem;
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
 }
 
 .clickable {

@@ -1,4 +1,4 @@
-.front-page {
+.overview-page {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -7,7 +7,12 @@
     align-items: center;
 }
 
-.latest-articles {
+.overview-img {
+    width: 20rem;
+    height: 20rem;
+}
+
+.overview-articles {
     display: flex;
     flex-direction: column;
     width: 90vw;
