@@ -23,6 +23,7 @@ const (
 	IMAGEPATH_COLUMN   = "image"
 	ARTICLE_COLUMN     = "article"
 	LIVE_COLUMN        = "live"
+	INSERT_COLUMN      = "insert"
 )
 
 type ArticleInfo struct {
@@ -35,6 +36,7 @@ type ArticleInfo struct {
 	ImagePath   string
 	ArticlePath string
 	Article     string
+	Insert      string
 	New         bool
 }
 
@@ -107,6 +109,7 @@ func (d *DatabaseClient) GetFullArticle(title, section string) (ArticleInfo, err
 
 	fullArticle := parseArticle(article)
 	fullArticle.Article = article.GetString(ARTICLE_COLUMN)
+	fullArticle.Insert = article.GetString(INSERT_COLUMN)
 
 	return fullArticle, nil
 }
