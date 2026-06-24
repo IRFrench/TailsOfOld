@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --hue: 300;
+
+    --link_light: oklch(53.492% 0.29346 var(--hue));
+    --link_light_hover: oklch(63.221% 0.24514 var(--hue));
+    --link_dark: oklch(86.52% 0.17676 var(--hue));
+    --link_dark_hover: oklch(62.66% 0.12805 var(--hue));
+}
+
 .ribbon {
     --f: .5em;
     /* control the folded part*/

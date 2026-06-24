@@ -41,7 +41,9 @@
                     <!-- Darkmode -->
                     <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
                         <a class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2 cursor-pointer"
-                            onclick="toggleTheme()" data-twe-nav-link-ref>Theme</a>
+                            onclick="toggleTheme()" data-twe-collapse-init data-twe-ripple-init
+                            data-twe-ripple-color="light" role="button" aria-expanded="false" aria-controls="themeMenu"
+                            data-twe-nav-link-ref>Theme</a>
                     </li>
                 </ul>
             </div>
@@ -65,6 +67,12 @@
             </div>
         </div>
     </nav>
+    <div class="hidden text-center w-100 p-8" id="themeMenu" data-twe-collapse-item>
+        <label for="hueRange" class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Colour</label>
+        <input type="range"
+            class="transparent h-[4px] w-full cursor-pointer appearance-none border-transparent bg-neutral-200 dark:bg-neutral-400"
+            id="hueRange" min="0" , max="360" value="300" step="1" name="hue" />
+    </div>
     <hr
         class="h-1 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-purple-600 to-transparent dark:via-yellow-400" />
 </div>

@@ -3,3 +3,4 @@ tmp/
 config.yaml
 pb_data/
 node_modules
+.DS_Store

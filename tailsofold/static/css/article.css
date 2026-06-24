@@ -1,19 +1,19 @@
 .article a {
-    color: #8400ff;
+    color: var(--link_light);
     text-decoration: underline;
 }
 
 .article a:hover {
-    color: #ab52ff;
+    color: var(--link_light_hover);
 }
 
 .dark .article a {
-    color: #ffcc00;
+    color: var(--link_dark);
     text-decoration: underline;
 }
 
 .dark .article a:hover {
-    color: #a58400;
+    color: var(--link_dark_hover);
 }
 
 .article h1 {
@@ -21,11 +21,11 @@
     margin-bottom: 1rem;
     font-size: xx-large;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h1 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article h2 {
@@ -33,11 +33,11 @@
     margin-bottom: 1rem;
     font-size: x-large;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h2 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article h3 {
@@ -45,11 +45,11 @@
     margin-bottom: 1rem;
     font-size: large;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h3 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article h4 {
@@ -57,11 +57,11 @@
     margin-bottom: 1rem;
     font-size: medium;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h4 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article h5 {
@@ -69,11 +69,11 @@
     margin-bottom: 1rem;
     font-size: smaller;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h5 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article h6 {
@@ -81,11 +81,11 @@
     margin-bottom: 1rem;
     font-size: small;
     font-weight: 700;
-    color: #8400ff;
+    color: var(--link_light);
 }
 
 .dark .article h6 {
-    color: #ffcc00;
+    color: var(--link_dark);
 }
 
 .article pre {
@@ -110,7 +110,7 @@
 
 .article code {
     background-color: #d4d4d4;
-    color: #8400ff;
+    color: var(--link_light);
     padding-left: .25rem;
     padding-right: .25rem;
     border-radius: 5px;
@@ -118,7 +118,7 @@
 
 .dark .article code {
     background-color: #404040;
-    color: #ffcc00;
+    color: var(--link_dark);
     padding-left: .25rem;
     padding-right: .25rem;
     border-radius: 5px;
