@@ -1,0 +1,19 @@
+{{define "insert"}}
+<div class="text-center w-100 p-8" id="themeMenu" data-twe-collapse-item>
+    <label for="hueRange" class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Hue: <span id="hueNumber">
+            300</span>
+    </label>
+    <input type="range"
+        class="transparent h-[4px] w-full cursor-pointer appearance-none border-transparent bg-neutral-200 dark:bg-neutral-400"
+        id="hueRange" min="0" , max="360" value="300" step="1" name="hue" />
+</div>
+
+<script>
+    $("#hueRange").on("input", function () {
+        var hue = $("#hueRange").val();
+        console.log(hue);
+        document.documentElement.style.setProperty("--hue", hue)
+        $("#hueNumber").text(hue)
+    })
+</script>
+{{end}}

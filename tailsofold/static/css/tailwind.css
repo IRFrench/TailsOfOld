@@ -1480,6 +1480,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   color: rgb(0 0 0 / 0.6);
 }
 
+.text-neutral-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+
 .text-neutral-500 {
   --tw-text-opacity: 1;
   color: rgb(115 115 115 / var(--tw-text-opacity));

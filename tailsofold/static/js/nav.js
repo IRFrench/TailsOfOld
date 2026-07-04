@@ -4,35 +4,22 @@ function toggleTheme() {
         body.removeClass("dark");
         body.addClass("light");
         localStorage.theme = "light";
+        document.documentElement.style.setProperty("--hue", 300);
         return;
     }
     body.removeClass("light");
     body.addClass("dark");
     localStorage.theme = "dark";
+    document.documentElement.style.setProperty("--hue", 90);
 }
-
-function toggleThemeMenu() {
-    var menu = $("#themeMenu")
-    if (menu.hasClass("hidden")) {
-        menu.removeClass("hidden")
-        return
-    }
-    menu.addClass("hidden")
-}
-
-$("#hueRange").on("input", function () {
-    var hue = $("#hueRange").val();
-    console.log(hue);
-    document.documentElement.style.setProperty("--hue", hue)
-    document.documentElement.style.setProperty("hue", hue)
-
-})
 
 if (localStorage.theme) {
     $("body").addClass(localStorage.theme);
+    document.documentElement.style.setProperty("--hue", 90);
 } else {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         $("body").addClass("dark");
+        document.documentElement.style.setProperty("--hue", 90);
     }
 }
 
