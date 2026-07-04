@@ -15,7 +15,10 @@ function toggleTheme() {
 
 if (localStorage.theme) {
     $("body").addClass(localStorage.theme);
-    document.documentElement.style.setProperty("--hue", 90);
+
+    if (localStorage.theme == "dark") {
+        document.documentElement.style.setProperty("--hue", 90);
+    }
 } else {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         $("body").addClass("dark");
